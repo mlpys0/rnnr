@@ -1249,3 +1249,97 @@ a {
     font-size: 1.45rem;
   }
 }
+
+/* ==================================================
+   SPECIAL THANKS GALLERY
+================================================== */
+
+.special-thanks-card {
+  width: 100%;
+  margin: 22px 0;
+  padding: 22px 18px 20px;
+  overflow: hidden;
+}
+
+.special-thanks-heading {
+  margin: 0 0 18px;
+  text-align: center;
+}
+
+.special-thanks-heading span {
+  display: block;
+  color: #d2a1aa;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-align: center;
+}
+
+.special-thanks-heading p {
+  margin: 6px 0 0 !important;
+
+  color: #bdb4b7;
+
+  font-family:
+    "Hiragino Mincho ProN",
+    "Hiragino Mincho Pro",
+    "Yu Mincho",
+    "YuMincho",
+    serif;
+
+  font-size: 0.72rem !important;
+  text-align: center !important;
+}
+
+
+/* 4枚を2列で並べる */
+
+.special-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+
+  width: 100%;
+  max-width: 100%;
+}
+
+
+/* 各画像の枠 */
+
+.special-gallery a {
+  display: block;
+
+  width: 100%;
+  min-width: 0;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: rgba(20, 18, 21, 0.5);
+}
+
+
+/* 画像 */
+
+.special-gallery img {
+  display: block;
+
+  width: 100% !important;
+  max-width: 100% !important;
+
+  height: auto !important;
+
+  aspect-ratio: 1 / 1;
+
+  object-fit: cover;
+
+  margin: 0 !important;
+
+  border-radius: 10px;
+}
