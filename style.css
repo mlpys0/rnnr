@@ -2600,3 +2600,51 @@ body::after {
     font-size: 0.52rem;
   }
 }
+
+/* =========================================
+   ALIGNMENT FIX
+   表紙・章タイトル = 中央
+   本文 = 左
+========================================= */
+
+/* 本文側は基本左揃え */
+main {
+  text-align: left;
+}
+
+.card,
+.card h2,
+.card h3,
+.card p,
+.profile,
+.text-block,
+.song-item,
+.song-note,
+.song-artist {
+  text-align: left;
+}
+
+
+/* 表紙だけ中央 */
+.hero,
+.hero-content,
+.hero-title,
+.hero .note {
+  text-align: center;
+}
+
+
+/* ABOUT MEなどの章タイトルも中央 */
+.chapter-title,
+.chapter-title h2,
+.chapter-title p,
+.chapter-number {
+  text-align: center;
+}
+
+
+/* ナビボタンも中央配置 */
+.hero-nav,
+.sticky-nav {
+  justify-content: center !important;
+}
