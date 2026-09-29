@@ -1443,3 +1443,229 @@ body::after {
     opacity: 0.24;
   }
 }
+
+/* ==================================================
+   NAV COLOR + CENTER
+================================================== */
+
+/* ナビ全体を中央揃え */
+.jump-nav {
+  justify-content: center !important;
+}
+
+
+/* スマホでも中央 */
+@media (max-width: 600px) {
+  .jump-nav {
+    justify-content: center !important;
+
+    margin-left: -4%;
+    margin-right: -4%;
+
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+
+
+/* ------------------------------
+   ME = gray
+------------------------------ */
+
+.jump-nav a:nth-child(1) {
+  color: #c4c4ca;
+
+  border-color:
+    rgba(155, 155, 165, 0.38);
+
+  background:
+    rgba(135, 135, 145, 0.10);
+}
+
+
+/* ------------------------------
+   HIM = red
+------------------------------ */
+
+.jump-nav a:nth-child(2) {
+  color: #c95b6d;
+
+  border-color:
+    rgba(145, 30, 48, 0.50);
+
+  background:
+    rgba(115, 18, 35, 0.16);
+}
+
+
+/* ------------------------------
+   US = gray → red
+------------------------------ */
+
+.jump-nav a:nth-child(3) {
+  color: #e1d9dc;
+
+  border-color:
+    rgba(135, 75, 86, 0.48);
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(125, 125, 135, 0.16),
+      rgba(116, 18, 37, 0.22)
+    );
+}
+
+
+/* ------------------------------
+   SONGS = pale red
+------------------------------ */
+
+.jump-nav a:nth-child(4) {
+  color: #d5a0aa;
+
+  border-color:
+    rgba(164, 91, 105, 0.36);
+
+  background:
+    rgba(135, 58, 73, 0.10);
+}
+
+
+/* ------------------------------
+   GALLERY = white
+------------------------------ */
+
+.jump-nav a:nth-child(5) {
+  color: #e8e5e6;
+
+  border-color:
+    rgba(220, 215, 218, 0.24);
+
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+
+/* ------------------------------
+   押した時だけ少し明るく
+------------------------------ */
+
+.jump-nav a:active,
+.jump-nav a:hover {
+  filter: brightness(1.25);
+  transform: translateY(-1px);
+}
+
+/* ==================================================
+   NAV COLOR + CENTER
+================================================== */
+
+/* ナビ全体を中央揃え */
+.jump-nav {
+  justify-content: center !important;
+}
+
+
+/* スマホでも中央 */
+@media (max-width: 600px) {
+  .jump-nav {
+    justify-content: center !important;
+
+    margin-left: -4%;
+    margin-right: -4%;
+
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}
+
+
+/* ------------------------------
+   ME = gray
+------------------------------ */
+
+.jump-nav a:nth-child(1) {
+  color: #c4c4ca;
+
+  border-color:
+    rgba(155, 155, 165, 0.38);
+
+  background:
+    rgba(135, 135, 145, 0.10);
+}
+
+
+/* ------------------------------
+   HIM = red
+------------------------------ */
+
+.jump-nav a:nth-child(2) {
+  color: #c95b6d;
+
+  border-color:
+    rgba(145, 30, 48, 0.50);
+
+  background:
+    rgba(115, 18, 35, 0.16);
+}
+
+
+/* ------------------------------
+   US = gray → red
+------------------------------ */
+
+.jump-nav a:nth-child(3) {
+  color: #e1d9dc;
+
+  border-color:
+    rgba(135, 75, 86, 0.48);
+
+  background:
+    linear-gradient(
+      120deg,
+      rgba(125, 125, 135, 0.16),
+      rgba(116, 18, 37, 0.22)
+    );
+}
+
+
+/* ------------------------------
+   SONGS = pale red
+------------------------------ */
+
+.jump-nav a:nth-child(4) {
+  color: #d5a0aa;
+
+  border-color:
+    rgba(164, 91, 105, 0.36);
+
+  background:
+    rgba(135, 58, 73, 0.10);
+}
+
+
+/* ------------------------------
+   GALLERY = white
+------------------------------ */
+
+.jump-nav a:nth-child(5) {
+  color: #e8e5e6;
+
+  border-color:
+    rgba(220, 215, 218, 0.24);
+
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+
+/* ------------------------------
+   押した時だけ少し明るく
+------------------------------ */
+
+.jump-nav a:active,
+.jump-nav a:hover {
+  filter: brightness(1.25);
+  transform: translateY(-1px);
+}
