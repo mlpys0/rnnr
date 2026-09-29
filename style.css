@@ -75,6 +75,23 @@ main {
   margin: 0 auto;
   padding: 0 0 110px;
   text-align: left;
+
+  background:
+    radial-gradient(
+      circle at 100% 25%,
+      rgba(132, 20, 41, 0.18),
+      transparent 24%
+    ),
+    radial-gradient(
+      circle at 0% 50%,
+      rgba(120, 120, 132, 0.10),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 100% 72%,
+      rgba(132, 20, 41, 0.16),
+      transparent 26%
+    );
 }
 
 a {
