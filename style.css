@@ -981,3 +981,238 @@ a {
   content: none !important;
   display: none !important;
 }
+/* ==================================================
+   CHAPTER TITLE
+   ABOUT ME / ABOUT HIM / ABOUT US
+================================================== */
+
+.chapter-title {
+  position: relative;
+
+  margin: 64px 0 28px;
+  padding: 26px 10px 22px;
+
+  text-align: center;
+
+  background: transparent;
+}
+
+
+/* 上の小さい番号 */
+
+.chapter-number {
+  display: block;
+
+  margin-bottom: 4px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.28em;
+
+  color: #777177;
+}
+
+
+/* ABOUT ～ */
+
+.chapter-title h2 {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    "Yu Mincho",
+    serif;
+
+  font-size: 1.42rem;
+  font-weight: 400;
+
+  letter-spacing: 0.20em;
+
+  color: #eee9eb;
+}
+
+
+/* 名前 */
+
+.chapter-title p {
+  margin: 7px 0 0;
+
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    serif;
+
+  font-size: 0.68rem;
+
+  letter-spacing: 0.16em;
+
+  color: #8d8589;
+}
+
+
+/* 左右の飾り線 */
+
+.chapter-title::before,
+.chapter-title::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+
+  width: 23%;
+  height: 1px;
+}
+
+.chapter-title::before {
+  left: 0;
+}
+
+.chapter-title::after {
+  right: 0;
+}
+
+
+/* ------------------------------
+   ABOUT ME
+   寧子 = gray
+------------------------------ */
+
+.chapter-me::before,
+.chapter-me::after {
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(151, 151, 160, 0.70)
+    );
+}
+
+.chapter-me::after {
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(151, 151, 160, 0.70)
+    );
+}
+
+.chapter-me h2 {
+  color: #d5d5da;
+}
+
+.chapter-me .chapter-number {
+  color: #8c8c94;
+}
+
+
+/* ------------------------------
+   ABOUT HIM
+   蓮 = red
+------------------------------ */
+
+.chapter-him::before,
+.chapter-him::after {
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(144, 25, 43, 0.85)
+    );
+}
+
+.chapter-him::after {
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(144, 25, 43, 0.85)
+    );
+}
+
+.chapter-him h2 {
+  color: #b94758;
+}
+
+.chapter-him .chapter-number {
+  color: #8f3443;
+}
+
+
+/* ------------------------------
+   ABOUT US
+   gray × red
+------------------------------ */
+
+.chapter-us::before {
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(145, 145, 153, 0.65),
+      rgba(112, 20, 37, 0.75)
+    );
+}
+
+.chapter-us::after {
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(112, 20, 37, 0.75),
+      rgba(145, 145, 153, 0.65)
+    );
+}
+
+.chapter-us h2 {
+  color: #d5c4c8;
+}
+
+.chapter-us .chapter-number {
+  color: #92636b;
+}
+
+
+/* ABOUT USだけ小さいモチーフ */
+
+.chapter-us h2::after {
+  content: " ♢ ";
+
+  display: block;
+
+  margin-top: 9px;
+
+  font-size: 0.55rem;
+
+  color: #762234;
+}
+
+
+/* スマホ */
+
+@media (max-width: 600px) {
+
+  .chapter-title {
+    margin-top: 52px;
+    margin-bottom: 22px;
+
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+
+  .chapter-title h2 {
+    font-size: 1.24rem;
+  }
+
+  .chapter-title::before,
+  .chapter-title::after {
+    width: 20%;
+  }
+
+}
