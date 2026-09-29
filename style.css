@@ -1350,3 +1350,123 @@ a {
 
   color: #c8c1c3;
 }
+
+/* ==================================================
+   JUMP NAVIGATION
+================================================== */
+
+.jump-nav {
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin: 18px 0 30px;
+  padding: 10px 10px;
+
+  overflow-x: auto;
+
+  background:
+    rgba(24, 23, 25, 0.88);
+
+  border-top:
+    1px solid rgba(180, 170, 174, 0.10);
+
+  border-bottom:
+    1px solid rgba(180, 170, 174, 0.10);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  scrollbar-width: none;
+}
+
+.jump-nav::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* ボタン */
+
+.jump-nav a {
+  flex: 0 0 auto;
+
+  padding: 7px 11px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.60rem;
+
+  letter-spacing: 0.12em;
+
+  color: #c9c2c5;
+
+  text-decoration: none;
+
+  border:
+    1px solid rgba(155, 145, 150, 0.16);
+
+  border-radius: 99px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+/* タップ・ホバー */
+
+.jump-nav a:hover,
+.jump-nav a:active {
+  color: #ffffff;
+
+  background:
+    rgba(116, 19, 37, 0.30);
+
+  border-color:
+    rgba(150, 39, 58, 0.42);
+}
+
+
+/* ジャンプした時に
+   固定ナビにタイトルが隠れないようにする */
+
+.chapter-title {
+  scroll-margin-top: 75px;
+}
+
+
+/* スマホ */
+
+@media (max-width: 600px) {
+
+  .jump-nav {
+    justify-content: flex-start;
+
+    margin-left: -4%;
+    margin-right: -4%;
+
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .jump-nav a {
+    padding: 7px 10px;
+
+    font-size: 0.57rem;
+  }
+
+}
