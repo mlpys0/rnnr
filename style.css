@@ -632,3 +632,336 @@ a {
   }
 
 }
+/* ==================================================
+   rnnr DARK OVERRIDE
+   Neruko = gray
+   Ren = deep red
+================================================== */
+
+
+/* --------------------------------
+   NERUKO / REN の小さい英字を消す
+-------------------------------- */
+
+.card.her h2::after,
+.card.him h2::after,
+.card.relationship h2::after {
+  content: none !important;
+}
+
+
+/* --------------------------------
+   真ん中の一本線を消す
+-------------------------------- */
+
+main::before {
+  display: none;
+}
+
+
+/* --------------------------------
+   全体背景
+-------------------------------- */
+
+body {
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 20% 15%,
+      rgba(115, 115, 125, 0.11),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(120, 10, 28, 0.13),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 40% 85%,
+      rgba(74, 69, 73, 0.10),
+      transparent 35%
+    ),
+    #181719;
+
+  color: #ded8da;
+}
+
+
+/* --------------------------------
+   背景の鎖っぽい装飾
+-------------------------------- */
+
+body::before {
+  content: "";
+
+  position: fixed;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.14;
+
+  background-image:
+    radial-gradient(
+      ellipse at center,
+      transparent 45%,
+      rgba(180, 175, 178, 0.42) 47%,
+      rgba(180, 175, 178, 0.42) 52%,
+      transparent 54%
+    );
+
+  background-size: 34px 18px;
+
+  transform: rotate(-18deg) scale(1.2);
+
+  z-index: -2;
+}
+
+
+/* --------------------------------
+   薔薇っぽい装飾
+   右上と左下にぼんやり置く
+-------------------------------- */
+
+body::after {
+  content: "✦";
+
+  position: fixed;
+
+  right: -20px;
+  top: 80px;
+
+  width: 150px;
+  height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: Georgia, serif;
+
+  font-size: 7rem;
+
+  color: rgba(110, 12, 29, 0.10);
+
+  transform: rotate(20deg);
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* --------------------------------
+   メインタイトル
+-------------------------------- */
+
+h1 {
+  color: #ece8e9;
+
+  text-shadow:
+    0 0 25px rgba(120, 18, 36, 0.10);
+}
+
+.subtitle {
+  color: #867e82;
+}
+
+
+/* --------------------------------
+   注意書き
+-------------------------------- */
+
+.note {
+  color: #b8b0b3;
+
+  background:
+    rgba(37, 34, 37, 0.74);
+
+  border-top:
+    1px solid rgba(130, 117, 123, 0.20);
+
+  border-bottom:
+    1px solid rgba(130, 117, 123, 0.20);
+}
+
+.note::before {
+  color: #7e7479;
+}
+
+
+/* --------------------------------
+   共通カード
+-------------------------------- */
+
+.card {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(39, 36, 39, 0.96),
+      rgba(29, 27, 30, 0.94)
+    );
+
+  border:
+    1px solid rgba(170, 160, 164, 0.10);
+
+  box-shadow:
+    0 10px 32px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.card h2 {
+  color: #e4dfe1;
+
+  border-bottom:
+    1px solid rgba(180, 170, 174, 0.09);
+}
+
+
+/* --------------------------------
+   寧子
+   gray / charcoal
+-------------------------------- */
+
+.card.her {
+  border-left:
+    3px solid rgba(145, 145, 153, 0.68);
+}
+
+.card.her::before {
+  background:
+    linear-gradient(
+      to right,
+      #66666d,
+      #99999f
+    );
+}
+
+.her-gallery img {
+  border-bottom:
+    2px solid rgba(145, 145, 153, 0.70);
+}
+
+
+/* --------------------------------
+   蓮
+   deep red / wine red
+-------------------------------- */
+
+.card.him {
+  border-left:
+    3px solid rgba(148, 25, 43, 0.78);
+}
+
+.card.him::before {
+  background:
+    linear-gradient(
+      to right,
+      #6c0d1d,
+      #aa283e
+    );
+}
+
+.him-gallery img {
+  border-bottom:
+    2px solid rgba(148, 25, 43, 0.80);
+}
+
+
+/* --------------------------------
+   二人
+   gray × red
+-------------------------------- */
+
+.card.relationship {
+  border-left:
+    3px solid rgba(109, 55, 65, 0.85);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(38, 35, 38, 0.97),
+      rgba(48, 30, 35, 0.95)
+    );
+}
+
+.card.relationship::before {
+  background:
+    linear-gradient(
+      to right,
+      #77777e,
+      #731326
+    );
+}
+
+
+/* --------------------------------
+   本文
+-------------------------------- */
+
+.profile,
+.text-block {
+  color: #d1cbcd;
+}
+
+.text-block strong {
+  color: #e7e0e2;
+}
+
+
+/* --------------------------------
+   ギャラリー
+-------------------------------- */
+
+.gallery img {
+  border:
+    1px solid rgba(190, 180, 184, 0.12);
+
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+
+/* --------------------------------
+   ちみキャラ区切り
+-------------------------------- */
+
+.pair-divider:has(img)::before,
+.pair-divider:has(img)::after {
+  width: 58px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(140, 140, 146, 0.35),
+      rgba(112, 18, 34, 0.40),
+      transparent
+    );
+}
+
+
+/* --------------------------------
+   リンク
+-------------------------------- */
+
+a {
+  color: #b65c6c;
+
+  text-decoration-color:
+    rgba(182, 92, 108, 0.35);
+}
+
+
+/* --------------------------------
+   選択した文字
+-------------------------------- */
+
+::selection {
+  background:
+    rgba(125, 21, 41, 0.45);
+
+  color: #ffffff;
+}
