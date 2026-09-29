@@ -2657,3 +2657,71 @@ main {
     "Hiragino Mincho Pro",
     serif;
 }
+
+/* =========================================
+   CARD TEXT UNIFY
+   カード内の文字を統一＋左寄せ
+========================================= */
+
+/* カード内は全部左寄せ */
+.card,
+.card h2,
+.card h3,
+.card p,
+.card div,
+.profile,
+.text-block {
+  text-align: left !important;
+}
+
+
+/* プロフィール・容姿・恋人に対して・セリフ集
+   本文のフォント、サイズ、行間を完全統一 */
+.profile,
+.text-block {
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Hiragino Mincho Pro",
+    serif !important;
+
+  font-size: 0.86rem !important;
+  line-height: 2 !important;
+  letter-spacing: 0.02em;
+
+  color: #d1cbcd;
+}
+
+
+/* カード内見出しも左寄せ */
+.card h2,
+.card h3 {
+  text-align: left !important;
+
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Hiragino Mincho Pro",
+    serif;
+
+  font-weight: 400;
+}
+
+
+/* ABOUT MEなどの章タイトルは中央のまま */
+.chapter-title,
+.chapter-title h2,
+.chapter-title p,
+.chapter-number {
+  text-align: center !important;
+}
+
+
+/* 最初の表紙も中央のまま */
+.hero,
+.hero-content,
+.hero-title,
+.hero .note,
+.hero .note p {
+  text-align: center !important;
+}
