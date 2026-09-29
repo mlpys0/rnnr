@@ -289,41 +289,47 @@ a {
     border-color 0.2s ease;
 }
 
+/* TOP = neutral white */
+.jump-nav .nav-top {
+  color: #d8d3d5;
+  border-color: rgba(200, 195, 198, 0.25);
+  background: rgba(255, 255, 255, 0.035);
+}
+
 /* ME = gray */
-.jump-nav a:nth-child(1) {
+.jump-nav .nav-me {
   color: #c4c4ca;
   border-color: rgba(155, 155, 165, 0.38);
   background: rgba(135, 135, 145, 0.10);
 }
 
 /* HIM = red */
-.jump-nav a:nth-child(2) {
+.jump-nav .nav-him {
   color: #c95b6d;
   border-color: rgba(145, 30, 48, 0.50);
   background: rgba(115, 18, 35, 0.16);
 }
 
-/* US = gray -> red */
-.jump-nav a:nth-child(3) {
+/* US = gray → red */
+.jump-nav .nav-us {
   color: #e1d9dc;
   border-color: rgba(135, 75, 86, 0.48);
-  background:
-    linear-gradient(
-      120deg,
-      rgba(125, 125, 135, 0.16),
-      rgba(116, 18, 37, 0.22)
-    );
+  background: linear-gradient(
+    120deg,
+    rgba(125, 125, 135, 0.16),
+    rgba(116, 18, 37, 0.22)
+  );
 }
 
 /* SONGS = pale red */
-.jump-nav a:nth-child(4) {
-  color: var(--red-soft);
+.jump-nav .nav-songs {
+  color: #d5a0aa;
   border-color: rgba(164, 91, 105, 0.36);
   background: rgba(135, 58, 73, 0.10);
 }
 
 /* GALLERY = white */
-.jump-nav a:nth-child(5) {
+.jump-nav .nav-gallery {
   color: #e8e5e6;
   border-color: rgba(220, 215, 218, 0.24);
   background: rgba(255, 255, 255, 0.035);
@@ -876,24 +882,33 @@ a {
     gap: 5px;
     padding: 8px;
   }
-  .hero-nav a {
-    padding: 7px 9px;
-    font-size: 0.53rem;
-  }
-  .hero .note {
-    padding: 20px 17px;
-  }
-  .sticky-nav {
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
-    gap: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  .sticky-nav a {
-    padding: 6px 8px;
-    font-size: 0.52rem;
-  }
+  .hero-nav {
+  gap: 4px;
+  padding: 8px;
+  justify-content: center;
+}
+
+.hero-nav a {
+  padding: 6px 7px;
+  font-size: 0.50rem;
+}
+
+.sticky-nav {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
+  gap: 4px;
+
+  padding-left: 8px;
+  padding-right: 8px;
+
+  justify-content: center;
+}
+
+.sticky-nav a {
+  padding: 6px 7px;
+  font-size: 0.50rem;
+}
   .chapter-title {
     margin-top: 52px;
     margin-bottom: 22px;
@@ -928,15 +943,23 @@ a {
 ================================================== */
 
 @media (max-width: 380px) {
+
+  .hero-nav,
+  .sticky-nav {
+    gap: 3px;
+  }
+
   .hero-nav a,
   .sticky-nav a {
-    padding-left: 7px;
-    padding-right: 7px;
+    padding: 5px 6px;
+    font-size: 0.47rem;
   }
+
   .card {
     padding-left: 16px;
     padding-right: 16px;
   }
+
   .profile,
   .text-block {
     font-size: 0.83rem;
