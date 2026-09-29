@@ -1852,3 +1852,95 @@ main {
       rgba(210, 205, 208, 0.45)
     );
 }
+
+/* ==================================================
+   REAL ROSE BACKGROUND
+================================================== */
+
+body {
+  background:
+    radial-gradient(
+      circle at 18% 15%,
+      rgba(120, 120, 128, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 84% 74%,
+      rgba(126, 24, 42, 0.10),
+      transparent 30%
+    ),
+    #262327;
+
+  color: #ded8da;
+}
+
+
+/* 左上：寧子の灰色薔薇 */
+body::before {
+  content: "";
+
+  position: fixed;
+  top: 70px;
+  left: -28px;
+
+  width: 220px;
+  height: 220px;
+
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    url("./images/rose-gray.png")
+    no-repeat center / contain;
+
+  opacity: 0.20;
+}
+
+
+/* 右下：蓮くんの赤薔薇 */
+body::after {
+  content: "";
+
+  position: fixed;
+  right: -34px;
+  bottom: 14px;
+
+  width: 240px;
+  height: 240px;
+
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    url("./images/rose-red.png")
+    no-repeat center / contain;
+
+  opacity: 0.24;
+}
+
+
+/* 本文を前面に出す */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* スマホ用 */
+@media (max-width: 600px) {
+  body::before {
+    width: 180px;
+    height: 180px;
+    left: -24px;
+    top: 86px;
+    opacity: 0.17;
+  }
+
+  body::after {
+    width: 195px;
+    height: 195px;
+    right: -28px;
+    bottom: 18px;
+    opacity: 0.20;
+  }
+}
