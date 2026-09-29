@@ -715,21 +715,39 @@ a {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin: 16px 0 25px;
+}
+
+/* 通常ギャラリーのfigure余白を消す */
+.gallery-item {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.gallery-item a {
+  display: block;
+  width: 100%;
+  text-decoration: none;
 }
 
 .gallery img {
   display: block;
   width: 100%;
+  max-width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  margin: 0;
+
   border: 1px solid rgba(190, 180, 184, 0.12);
   border-radius: 12px;
+
   box-shadow:
     0 8px 22px rgba(0, 0, 0, 0.28);
 }
+
 
 .her-gallery img {
   border-bottom: 2px solid rgba(145, 145, 153, 0.70);
@@ -909,8 +927,9 @@ a {
     left: 18px;
   }
   .gallery {
-    gap: 8px;
-  }
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
   .gallery img {
     border-radius: 10px;
   }
