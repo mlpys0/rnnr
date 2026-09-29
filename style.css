@@ -1216,3 +1216,137 @@ a {
   }
 
 }
+
+/* ------------------------------
+   GALLERY
+------------------------------ */
+
+.chapter-gallery::before,
+.chapter-gallery::after {
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(145, 145, 153, 0.65),
+      rgba(112, 20, 37, 0.75)
+    );
+}
+
+.chapter-gallery::after {
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(112, 20, 37, 0.75),
+      rgba(145, 145, 153, 0.65)
+    );
+}
+
+.chapter-gallery h2 {
+  color: #d9d3d5;
+}
+
+.chapter-gallery .chapter-number {
+  color: #7d6d72;
+}
+
+/* ==================================================
+   IMAGE SONGS
+================================================== */
+
+.chapter-songs::before {
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(145, 145, 153, 0.65),
+      rgba(112, 20, 37, 0.75)
+    );
+}
+
+.chapter-songs::after {
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      rgba(112, 20, 37, 0.75),
+      rgba(145, 145, 153, 0.65)
+    );
+}
+
+.chapter-songs h2 {
+  color: #d7cfd2;
+}
+
+.chapter-songs .chapter-number {
+  color: #89646c;
+}
+
+
+/* 曲カード */
+
+.songs-card {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.song-item {
+  position: relative;
+
+  padding: 25px 6px;
+
+  border-bottom:
+    1px solid rgba(180, 170, 174, 0.10);
+}
+
+.song-item:last-child {
+  border-bottom: none;
+}
+
+.song-for {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.18em;
+
+  color: #98505d;
+}
+
+.song-item h3 {
+  margin: 0;
+
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    serif;
+
+  font-size: 1.03rem;
+  font-weight: 500;
+
+  color: #e5dfe1;
+}
+
+.song-artist {
+  margin: 3px 0 13px;
+
+  font-size: 0.72rem;
+
+  color: #81797d;
+}
+
+.song-note {
+  margin: 0;
+
+  font-size: 0.84rem;
+  line-height: 1.9;
+
+  color: #c8c1c3;
+}
