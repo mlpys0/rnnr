@@ -275,14 +275,11 @@ a {
   align-items: center;
   justify-content: center;
   gap: 8px;
-
-  /* sticky と競合しないよう、共通側ではスクロールコンテナにしない */
-  overflow: visible;
-
+  overflow-x: auto;
+  scrollbar-width: none;
   background: rgba(24, 23, 25, 0.88);
   border-top: 1px solid rgba(180, 170, 174, 0.10);
   border-bottom: 1px solid rgba(180, 170, 174, 0.10);
-
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
 }
@@ -309,7 +306,7 @@ a {
     border-color 0.2s ease;
 }
 
-/* Navigation color: single muted wine */
+/* Navigation buttons: single color */
 
 .jump-nav a,
 .jump-nav .nav-top,
@@ -337,47 +334,28 @@ a {
   margin: 0;
   padding: 10px 12px;
   justify-content: center;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-  max-width: 100%;
-
   background: rgba(20, 18, 21, 0.74);
   border: 1px solid rgba(180, 168, 174, 0.10);
   border-radius: 999px;
-
-  scrollbar-width: none;
 }
 
 /* Sticky nav after the cover */
 
 .sticky-nav {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 9999;
-
-  width: 100vw;
+  z-index: 100;
   margin:
     0
     calc(50% - 50vw)
     55px;
-
   padding:
     11px
     max(18px, calc((100vw - var(--content-width)) / 2));
-
   justify-content: center;
-
-  /* sticky 要素自身をスクロールコンテナにしない */
-  overflow: visible;
-
-  background: rgba(22, 20, 23, 0.94);
+  background: rgba(22, 20, 23, 0.91);
   border-top: 1px solid rgba(170, 160, 165, 0.08);
   border-bottom: 1px solid rgba(170, 160, 165, 0.12);
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
 }
 
 /* ==================================================
@@ -897,6 +875,8 @@ a {
   }
 
   .sticky-nav {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
     gap: 4px;
     padding-left: 8px;
     padding-right: 8px;
@@ -1107,30 +1087,3 @@ a {
 
   color: #bbb3b6;
 }
-
-/* ==================================================
-   STICKY NAV SAFETY
-   iPhone / Safari
-================================================== */
-
-.sticky-nav {
-  position: -webkit-sticky !important;
-  position: sticky !important;
-  top: 0 !important;
-  z-index: 9999 !important;
-  overflow: visible !important;
-}
-
-/* ナビ色は全ボタン共通 */
-.jump-nav a {
-  color: #d2a1aa !important;
-  border-color: rgba(160, 92, 105, 0.32) !important;
-  background: rgba(125, 45, 60, 0.10) !important;
-}
-
-.jump-nav a:hover,
-.jump-nav a:active {
-  color: #ead7db !important;
-  background: rgba(130, 32, 50, 0.20) !important;
-}
-
