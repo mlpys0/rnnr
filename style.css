@@ -149,3 +149,7 @@ a {
     gap: 8px;
   }
 }
+.text-block,
+.profile {
+  white-space: pre-line;
+}
