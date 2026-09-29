@@ -2648,3 +2648,12 @@ main {
 .sticky-nav {
   justify-content: center !important;
 }
+
+.profile,
+.text-block {
+  font-family:
+    "Yu Mincho",
+    "Hiragino Mincho ProN",
+    "Hiragino Mincho Pro",
+    serif;
+}
