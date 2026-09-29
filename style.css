@@ -1362,3 +1362,52 @@ a {
 
   border-radius: 10px;
 }
+
+/* ==================================================
+   ABOUT US IMAGES
+================================================== */
+
+.about-us-images-card {
+  padding: 16px;
+  overflow: hidden;
+}
+
+.about-us-images {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+
+  width: 100%;
+  max-width: 100%;
+}
+
+.about-us-images a {
+  display: block;
+  width: 100%;
+  min-width: 0;
+
+  overflow: hidden;
+  text-decoration: none;
+
+  border-radius: 10px;
+}
+
+.about-us-images img {
+  display: block;
+
+  width: 100% !important;
+  max-width: 100% !important;
+
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+
+  margin: 0 !important;
+
+  border:
+    1px solid rgba(170, 120, 130, 0.14);
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 8px 22px rgba(0, 0, 0, 0.24);
+}
