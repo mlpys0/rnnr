@@ -942,3 +942,23 @@ a {
     font-size: 0.83rem;
   }
 }
+
+/* カード内の日本語本文を統一 */
+.profile,
+.text-block,
+.song-note,
+.song-artist {
+  font-family:
+    "Hiragino Mincho ProN",
+    "Hiragino Mincho Pro",
+    "Yu Mincho",
+    "YuMincho",
+    serif !important;
+
+  font-size: 0.86rem !important;
+  font-weight: 400;
+  line-height: 2 !important;
+  letter-spacing: 0.055em;
+
+  text-align: left !important;
+}
