@@ -962,3 +962,127 @@ a {
 
   text-align: left !important;
 }
+
+/* =========================================
+   IMAGE SONGS
+========================================= */
+
+.song-group {
+  padding: 18px 0 8px;
+}
+
+.song-group + .song-group {
+  margin-top: 18px;
+  padding-top: 28px;
+
+  border-top:
+    1px solid rgba(185, 175, 180, 0.10);
+}
+
+
+/* REN × NERUKO / REN / NERUKO */
+
+.song-group-title {
+  margin: 0 0 10px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif !important;
+
+  font-size: 0.67rem;
+  font-weight: 400;
+
+  letter-spacing: 0.20em;
+
+  color: #c5a3aa;
+
+  text-align: left !important;
+}
+
+
+/* 蓮 */
+
+.ren-song-title {
+  color: #bd5365;
+}
+
+
+/* 寧子 */
+
+.neruko-song-title {
+  color: #b5b5bd;
+}
+
+
+/* 1曲 */
+
+.song-item {
+  padding: 16px 0;
+
+  border-bottom:
+    1px solid rgba(185, 175, 180, 0.08);
+}
+
+.song-item:last-child {
+  border-bottom: none;
+}
+
+
+/* 曲名 */
+
+.song-title {
+  display: inline-block;
+
+  font-family:
+    "Hiragino Mincho ProN",
+    "Hiragino Mincho Pro",
+    "Yu Mincho",
+    "YuMincho",
+    serif;
+
+  font-size: 0.88rem;
+
+  color: #e5dfe1;
+
+  text-decoration: none;
+
+  border-bottom:
+    1px solid rgba(180, 92, 108, 0.35);
+
+  padding-bottom: 2px;
+}
+
+
+/* タップした時 */
+
+.song-title:hover,
+.song-title:active {
+  color: #d46a7c;
+
+  border-color:
+    rgba(212, 106, 124, 0.75);
+}
+
+
+/* アーティスト */
+
+.song-artist {
+  margin: 5px 0 10px;
+
+  font-size: 0.68rem !important;
+
+  color: #8f868a;
+}
+
+
+/* 選曲理由 */
+
+.song-note {
+  margin: 0;
+
+  font-size: 0.76rem !important;
+  line-height: 1.9;
+
+  color: #bbb3b6;
+}
