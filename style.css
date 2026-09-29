@@ -965,3 +965,7 @@ a {
 
   color: #ffffff;
 }
+.card h2::after {
+  content: none !important;
+  display: none !important;
+}
