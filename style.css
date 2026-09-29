@@ -687,85 +687,6 @@ body {
   color: #ded8da;
 }
 
-
-/* --------------------------------
-   背景の鎖っぽい装飾
--------------------------------- */
-
-/* 左側：寧子イメージの灰色チェーン */
-body::before {
-  content: "";
-
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 8px;
-
-  width: 30px;
-
-  pointer-events: none;
-  z-index: -1;
-
-  opacity: 0.32;
-
-  background-image:
-    radial-gradient(
-      ellipse 7px 12px at 50% 7px,
-      transparent 42%,
-      rgba(155, 155, 163, 0.85) 45%,
-      rgba(155, 155, 163, 0.85) 56%,
-      transparent 59%
-    ),
-    radial-gradient(
-      ellipse 12px 7px at 50% 22px,
-      transparent 42%,
-      rgba(155, 155, 163, 0.65) 45%,
-      rgba(155, 155, 163, 0.65) 56%,
-      transparent 59%
-    );
-
-  background-size: 30px 34px;
-  background-repeat: repeat-y;
-}
-
-
-/* 右側：蓮イメージの赤いチェーン */
-body::after {
-  content: "";
-
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 8px;
-
-  width: 30px;
-
-  pointer-events: none;
-  z-index: -1;
-
-  opacity: 0.28;
-
-  background-image:
-    radial-gradient(
-      ellipse 7px 12px at 50% 7px,
-      transparent 42%,
-      rgba(135, 24, 43, 0.95) 45%,
-      rgba(135, 24, 43, 0.95) 56%,
-      transparent 59%
-    ),
-    radial-gradient(
-      ellipse 12px 7px at 50% 22px,
-      transparent 42%,
-      rgba(135, 24, 43, 0.72) 45%,
-      rgba(135, 24, 43, 0.72) 56%,
-      transparent 59%
-    );
-
-  background-size: 30px 34px;
-  background-repeat: repeat-y;
-}
-
-
 /* --------------------------------
    メインタイトル
 -------------------------------- */
@@ -1469,4 +1390,56 @@ a {
     font-size: 0.57rem;
   }
 
+}
+
+/* ==============================
+   SIDE CHAINS
+============================== */
+
+body::before,
+body::after {
+  content: "";
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+
+  width: 54px;
+
+  pointer-events: none;
+  z-index: -1;
+
+  background-repeat: repeat-y;
+  background-position: center top;
+  background-size: 30px auto;
+}
+
+body::before {
+  left: 4px;
+  opacity: 0.34;
+  background-image: url("./images/chain-gray.svg");
+}
+
+body::after {
+  right: 4px;
+  opacity: 0.30;
+  background-image: url("./images/chain-red.svg");
+}
+
+@media (max-width: 600px) {
+  body::before,
+  body::after {
+    width: 40px;
+    background-size: 24px auto;
+  }
+
+  body::before {
+    left: 1px;
+    opacity: 0.28;
+  }
+
+  body::after {
+    right: 1px;
+    opacity: 0.24;
+  }
 }
