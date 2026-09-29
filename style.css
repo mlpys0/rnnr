@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background:
+    linear-gradient(
+      rgba(252, 249, 246, 0.9),
+      rgba(252, 249, 246, 0.9)
+    );
+  color: #2f2b2b;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    sans-serif;
+  line-height: 1.9;
+}
+
+main {
+  width: min(92%, 720px);
+  margin: 0 auto;
+  padding: 60px 0 100px;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  font-family:
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  color: #8d8383;
+  margin-bottom: 48px;
+}
+
+.card {
+  margin: 20px 0;
+  padding: 24px 22px;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  border: 1px solid rgba(180, 160, 160, 0.18);
+  border-radius: 20px;
+
+  box-shadow:
+    0 8px 30px rgba(70, 50, 50, 0.08);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e8dddd;
+}
+
+.profile {
+  white-space: pre-line;
+  font-size: 0.95rem;
+}
+
+.her {
+  border-top: 3px solid #d9cfdf;
+}
+
+.him {
+  border-top: 3px solid #b98282;
+}
+
+.relationship {
+  border-top: 3px solid #d6c5a4;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+}
+
+.section-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: #a49292;
+}
+
+.note {
+  text-align: center;
+  font-size: 0.82rem;
+  color: #777;
+  margin-bottom: 36px;
+}
+
+a {
+  color: inherit;
+}
+
+@media (max-width: 480px) {
+  main {
+    width: 92%;
+    padding-top: 40px;
+  }
+
+  .card {
+    padding: 20px 18px;
+    border-radius: 18px;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+
+  .gallery {
+    gap: 8px;
+  }
+}
