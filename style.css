@@ -1,3 +1,8 @@
+/* ==================================================
+   rnnr
+   ivory × wine red × mauve
+================================================== */
+
 * {
   box-sizing: border-box;
 }
@@ -9,147 +14,621 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background:
-    linear-gradient(
-      rgba(252, 249, 246, 0.9),
-      rgba(252, 249, 246, 0.9)
-    );
-  color: #2f2b2b;
+
+  color: #342f31;
+
   font-family:
     -apple-system,
     BlinkMacSystemFont,
     "Hiragino Kaku Gothic ProN",
     "Yu Gothic",
+    "YuGothic",
     sans-serif;
+
   line-height: 1.9;
+
+  background:
+    radial-gradient(
+      circle at 15% 10%,
+      rgba(188, 159, 174, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 35%,
+      rgba(126, 40, 49, 0.07),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(197, 177, 137, 0.08),
+      transparent 25%
+    ),
+    #f5f1ed;
+
+  background-attachment: fixed;
 }
+
+
+/* ==================================================
+   全体
+================================================== */
 
 main {
-  width: min(92%, 720px);
+  position: relative;
+
+  width: min(91%, 680px);
   margin: 0 auto;
-  padding: 60px 0 100px;
+
+  padding: 58px 0 110px;
 }
 
-h1,
-h2,
-h3 {
-  margin-top: 0;
+
+/* 中央の細い装飾線 */
+main::before {
+  content: "";
+
+  position: absolute;
+  z-index: -1;
+
+  top: 185px;
+  bottom: 80px;
+
+  left: 50%;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(167, 143, 111, 0.26) 6%,
+      rgba(167, 143, 111, 0.26) 94%,
+      transparent
+    );
+}
+
+
+/* ==================================================
+   タイトル
+================================================== */
+
+h1 {
+  margin: 0;
+
+  text-align: center;
+
   font-family:
     "Hiragino Mincho ProN",
     "Yu Mincho",
+    "YuMincho",
     serif;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-}
 
-h1 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 12px;
+  font-size: 2.25rem;
+  font-weight: 400;
+
+  letter-spacing: 0.18em;
+
+  color: #2c2729;
 }
 
 .subtitle {
+  margin: 5px 0 38px;
+
   text-align: center;
-  font-size: 0.78rem;
-  letter-spacing: 0.25em;
-  color: #8d8383;
-  margin-bottom: 48px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.68rem;
+
+  letter-spacing: 0.34em;
+
+  color: #9a8589;
 }
 
+
+/* ==================================================
+   注意書き
+================================================== */
+
+.note {
+  position: relative;
+
+  width: 94%;
+  margin: 0 auto 48px;
+
+  padding: 19px 18px;
+
+  text-align: center;
+
+  font-size: 0.78rem;
+  line-height: 1.9;
+
+  color: #766b6e;
+
+  background: rgba(255, 253, 251, 0.62);
+
+  border-top: 1px solid rgba(148, 118, 122, 0.17);
+  border-bottom: 1px solid rgba(148, 118, 122, 0.17);
+}
+
+.note::before {
+  content: "◇";
+
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: #b89b91;
+
+  font-size: 0.72rem;
+}
+
+
+/* ==================================================
+   共通カード
+================================================== */
+
 .card {
-  margin: 20px 0;
-  padding: 24px 22px;
+  position: relative;
 
-  background: rgba(255, 255, 255, 0.88);
+  margin: 22px 0;
 
-  border: 1px solid rgba(180, 160, 160, 0.18);
-  border-radius: 20px;
+  padding: 25px 24px 27px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.94),
+      rgba(252, 249, 247, 0.88)
+    );
+
+  border: 1px solid rgba(88, 70, 72, 0.09);
+
+  border-radius: 16px;
 
   box-shadow:
-    0 8px 30px rgba(70, 50, 50, 0.08);
+    0 8px 26px rgba(66, 47, 50, 0.055),
+    0 2px 5px rgba(66, 47, 50, 0.035);
 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
+
+/* カードの左上に小さい飾り */
+.card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 24px;
+
+  width: 38px;
+  height: 2px;
+
+  border-radius: 99px;
+
+  background: #b7a6a6;
+}
+
+
+/* ==================================================
+   見出し
+================================================== */
+
 .card h2 {
-  font-size: 1.1rem;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid #e8dddd;
+  position: relative;
+
+  margin: 0 0 18px;
+
+  padding-bottom: 12px;
+
+  font-family:
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    "YuMincho",
+    serif;
+
+  font-size: 1.08rem;
+  font-weight: 600;
+
+  letter-spacing: 0.08em;
+
+  color: #30292c;
+
+  border-bottom:
+    1px solid rgba(96, 78, 80, 0.10);
+}
+
+
+/* ==================================================
+   寧子側
+================================================== */
+
+.card.her {
+  border-left:
+    3px solid rgba(147, 121, 137, 0.52);
+}
+
+.card.her::before {
+  background: #9b7e90;
+}
+
+.card.her h2::after {
+  content: "NERUKO";
+
+  float: right;
+
+  margin-top: 4px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.56rem;
+  font-weight: 400;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(123, 95, 110, 0.50);
+}
+
+
+/* ==================================================
+   蓮側
+================================================== */
+
+.card.him {
+  border-left:
+    3px solid rgba(117, 42, 51, 0.62);
+}
+
+.card.him::before {
+  background: #772e39;
+}
+
+.card.him h2::after {
+  content: "REN";
+
+  float: right;
+
+  margin-top: 4px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.56rem;
+  font-weight: 400;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(107, 41, 49, 0.54);
+}
+
+
+/* ==================================================
+   二人について
+================================================== */
+
+.card.relationship {
+  border-left:
+    3px solid rgba(174, 145, 105, 0.58);
+}
+
+.card.relationship::before {
+  background: #b49b74;
+}
+
+.card.relationship h2::after {
+  content: "R × N";
+
+  float: right;
+
+  margin-top: 4px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.56rem;
+  font-weight: 400;
+
+  letter-spacing: 0.18em;
+
+  color: rgba(137, 110, 76, 0.55);
+}
+
+
+/* ==================================================
+   プロフィール・本文
+================================================== */
+
+.profile,
+.text-block {
+  white-space: pre-line;
 }
 
 .profile {
-  white-space: pre-line;
-  font-size: 0.95rem;
+  font-size: 0.91rem;
+
+  line-height: 2;
+
+  color: #40393b;
 }
 
-.her {
-  border-top: 3px solid #d9cfdf;
+.text-block {
+  margin: 0;
+
+  font-size: 0.91rem;
+
+  line-height: 2;
+
+  color: #40393b;
 }
 
-.him {
-  border-top: 3px solid #b98282;
+.card p {
+  margin-bottom: 0;
 }
 
-.relationship {
-  border-top: 3px solid #d6c5a4;
+
+/* セリフ集の【項目】 */
+.text-block strong {
+  display: inline-block;
+
+  margin-top: 8px;
+
+  font-family:
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    serif;
+
+  font-weight: 600;
+
+  color: #423638;
 }
+
+
+/* ==================================================
+   夢主詳細 / 御相手様詳細の見出しカード
+================================================== */
+
+.card.her:first-of-type,
+.card.him {
+}
+
+/*
+   「詳細」のカードも通常カードのまま使えるが、
+   h2しかないカードは少しタイトル札っぽくする
+*/
+.card > h2:only-child {
+  margin: 0;
+  padding: 2px 0;
+
+  border-bottom: none;
+
+  font-size: 1.16rem;
+}
+
+.card > h2:only-child::after {
+  margin-top: 6px;
+}
+
+
+/* ==================================================
+   ギャラリー
+================================================== */
 
 .gallery {
   display: grid;
+
   grid-template-columns: repeat(3, 1fr);
+
   gap: 10px;
-  margin-top: 16px;
+
+  margin: 16px 0 25px;
 }
 
 .gallery img {
+  display: block;
+
   width: 100%;
+
   aspect-ratio: 1 / 1;
+
   object-fit: cover;
-  border-radius: 14px;
-  display: block;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(80, 65, 67, 0.10);
+
+  box-shadow:
+    0 5px 14px rgba(55, 39, 42, 0.07);
 }
 
-.section-label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
-  color: #a49292;
+
+/* 寧子画像 */
+.her-gallery img {
+  border-bottom:
+    2px solid rgba(147, 121, 137, 0.50);
 }
 
-.note {
-  text-align: center;
-  font-size: 0.82rem;
-  color: #777;
-  margin-bottom: 36px;
+
+/* 蓮画像 */
+.him-gallery img {
+  border-bottom:
+    2px solid rgba(117, 42, 51, 0.60);
 }
+
+
+/* ==================================================
+   ちみキャラ区切り
+================================================== */
+
+.pair-divider {
+  display: none;
+}
+
+.pair-divider:has(img) {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 34px;
+
+  position: relative;
+
+  margin: 42px 0 46px;
+
+  padding: 16px 0;
+}
+
+.pair-divider:has(img)::before,
+.pair-divider:has(img)::after {
+  content: "";
+
+  width: 45px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(124, 88, 92, 0.33),
+      transparent
+    );
+}
+
+.pair-divider img {
+  width: 70px;
+  height: 70px;
+
+  object-fit: contain;
+}
+
+
+/* ==================================================
+   リンク
+================================================== */
 
 a {
-  color: inherit;
+  color: #703844;
+
+  text-decoration-color:
+    rgba(112, 56, 68, 0.28);
+
+  text-underline-offset: 4px;
 }
 
-@media (max-width: 480px) {
+
+/* ==================================================
+   選択色
+================================================== */
+
+::selection {
+  background: rgba(134, 58, 70, 0.16);
+
+  color: #332a2d;
+}
+
+
+/* ==================================================
+   スマホ
+================================================== */
+
+@media (max-width: 600px) {
+
   main {
     width: 92%;
-    padding-top: 40px;
+
+    padding-top: 43px;
+    padding-bottom: 90px;
   }
 
-  .card {
-    padding: 20px 18px;
-    border-radius: 18px;
+  main::before {
+    top: 170px;
   }
 
   h1 {
-    font-size: 1.7rem;
+    font-size: 1.9rem;
+  }
+
+  .subtitle {
+    margin-bottom: 32px;
+
+    font-size: 0.62rem;
+  }
+
+  .note {
+    width: 96%;
+
+    margin-bottom: 38px;
+
+    padding: 16px 14px;
+
+    font-size: 0.76rem;
+  }
+
+  .card {
+    margin: 18px 0;
+
+    padding: 21px 18px 23px;
+
+    border-radius: 14px;
+  }
+
+  .card::before {
+    left: 18px;
+  }
+
+  .card h2 {
+    font-size: 1.02rem;
+  }
+
+  .profile,
+  .text-block {
+    font-size: 0.86rem;
+
+    line-height: 1.95;
   }
 
   .gallery {
     gap: 8px;
   }
+
+  .gallery img {
+    border-radius: 10px;
+  }
+
 }
-.text-block,
-.profile {
-  white-space: pre-line;
+
+
+/* ==================================================
+   小さいスマホ
+================================================== */
+
+@media (max-width: 380px) {
+
+  .card {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .profile,
+  .text-block {
+    font-size: 0.83rem;
+  }
+
+  .card h2::after {
+    font-size: 0.50rem;
+  }
+
 }
