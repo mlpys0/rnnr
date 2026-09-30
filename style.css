@@ -253,14 +253,14 @@ a {
   display: block;
   margin-bottom: 12px;
   color: #8e8186;
-  font-size: 0.70rem;
+  font-size: 0.72rem;
 }
 
 .hero .note p {
   margin: 0;
   color: var(--text-soft);
   font-family: var(--font-jp);
-  font-size: 0.82rem;
+  font-size: 0.70rem;
   line-height: 2;
   text-align: center;
 }
