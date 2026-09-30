@@ -2682,3 +2682,182 @@ a {
 
   text-align: left;
 }
+
+/* ==================================================
+   ENTRY WARNING
+================================================== */
+
+.entry-warning {
+  position: fixed;
+  inset: 0;
+
+  z-index: 50000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 100dvh;
+
+  padding:
+    max(24px, env(safe-area-inset-top))
+    22px
+    max(24px, env(safe-area-inset-bottom));
+
+  background:
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(125, 18, 38, 0.14),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 15% 75%,
+      rgba(120, 120, 130, 0.07),
+      transparent 35%
+    ),
+    #171518;
+
+  opacity: 1;
+
+  transition:
+    opacity 0.65s ease,
+    visibility 0.65s ease;
+}
+
+
+.entry-warning.is-closing {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+
+/* CARD */
+
+.entry-warning-card {
+  width: min(100%, 470px);
+
+  padding: 38px 25px 34px;
+
+  text-align: center;
+
+  background:
+    rgba(27, 24, 28, 0.90);
+
+  border:
+    1px solid rgba(170, 145, 152, 0.12);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.40);
+}
+
+
+.entry-warning-mark {
+  display: block;
+
+  margin-bottom: 13px;
+
+  color: #8a747a;
+
+  font-size: 0.70rem;
+}
+
+
+.entry-warning-label {
+  margin: 0 0 7px;
+
+  color: #935263;
+
+  font-family: var(--font-en);
+
+  font-size: 0.52rem;
+  letter-spacing: 0.28em;
+
+  text-align: center;
+}
+
+
+.entry-warning-card h2 {
+  margin: 0 0 25px;
+
+  color: #ded6d9;
+
+  font-family: var(--font-en);
+
+  font-size: 1.05rem;
+  font-weight: 400;
+
+  letter-spacing: 0.23em;
+
+  text-align: center;
+}
+
+
+/* WARNING TEXT */
+
+.entry-warning-text {
+  margin: 0;
+
+  color: #aaa0a4;
+
+  font-family: var(--font-jp);
+
+  font-size: 0.70rem;
+  line-height: 2;
+
+  text-align: center;
+}
+
+
+.entry-warning-work {
+  display: inline-block;
+
+  margin: 4px 0;
+
+  padding: 1px 8px 3px;
+
+  color: #c96879;
+
+  letter-spacing: 0.04em;
+
+  border-bottom:
+    1px solid rgba(170, 70, 90, 0.35);
+}
+
+
+/* ENTER */
+
+.entry-warning-button {
+  margin-top: 28px;
+
+  padding: 8px 22px;
+
+  color: #c9919c;
+
+  font-family: var(--font-en);
+
+  font-size: 0.58rem;
+  letter-spacing: 0.20em;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  border:
+    1px solid rgba(160, 80, 97, 0.30);
+
+  border-radius: 999px;
+
+  background:
+    rgba(125, 40, 58, 0.09);
+}
+
+
+.entry-warning-button:active {
+  transform: scale(0.97);
+
+  background:
+    rgba(125, 40, 58, 0.18);
+}
