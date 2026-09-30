@@ -332,25 +332,31 @@ secretForm?.addEventListener(
     /* YES */
 
     if (
-      answer === "y" ||
-      answer === "yes"
-    ) {
+  answer === "y" ||
+  answer === "yes"
+) {
 
-      secretMessage.textContent =
-        "ACCESS CONFIRMED";
+  secretMessage.textContent =
+    "ACCESS CONFIRMED";
 
-      secretAnswer.disabled = true;
+  secretAnswer.disabled = true;
 
 
-      setTimeout(() => {
+  sessionStorage.setItem(
+    "rnnrAgeVerified",
+    "yes"
+  );
 
-        window.location.href =
-          "./secret.html";
 
-      }, 900);
+  setTimeout(() => {
 
-      return;
-    }
+    window.location.href =
+      "./secret.html";
+
+  }, 900);
+
+  return;
+}
 
 
     /* NO */
