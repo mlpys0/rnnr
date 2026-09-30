@@ -199,3 +199,36 @@ lightbox?.addEventListener(
     passive: true
   }
 );
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+const revealTargets = document.querySelectorAll(
+  ".card, .character-preview"
+);
+
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
+
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+
+        observer.unobserve(entry.target);
+      }
+
+    });
+
+  },
+  {
+    threshold: 0.12,
+    rootMargin: "0px 0px -6% 0px"
+  }
+);
+
+revealTargets.forEach((target) => {
+  target.classList.add("reveal-ready");
+  revealObserver.observe(target);
+});
