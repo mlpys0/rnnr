@@ -1411,3 +1411,107 @@ a {
   box-shadow:
     0 8px 22px rgba(0, 0, 0, 0.24);
 }
+
+/* ==================================================
+   ENDING
+================================================== */
+
+.ending {
+  margin: 70px 0 10px;
+  padding: 48px 20px 20px;
+
+  text-align: center;
+}
+
+.ending::before {
+  content: "";
+
+  display: block;
+
+  width: 70px;
+  height: 1px;
+
+  margin: 0 auto 28px;
+
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      rgba(160, 95, 108, 0.65),
+      transparent
+    );
+}
+
+.ending-ornament {
+  margin-bottom: 13px;
+
+  color: #824052;
+
+  font-size: 0.65rem;
+  text-align: center;
+}
+
+.ending-title {
+  margin: 0;
+
+  color: #d1c6c9;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+
+  text-align: center !important;
+}
+
+.ending-text {
+  margin: 13px 0 27px;
+
+  color: #948a8e;
+
+  font-family:
+    "Hiragino Mincho ProN",
+    "Hiragino Mincho Pro",
+    "Yu Mincho",
+    "YuMincho",
+    serif;
+
+  font-size: 0.72rem;
+  line-height: 2;
+
+  text-align: center !important;
+}
+
+.back-to-top {
+  display: inline-block;
+
+  padding: 7px 15px;
+
+  color: #c99ba4;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+
+  text-decoration: none;
+
+  border:
+    1px solid rgba(160, 92, 105, 0.26);
+
+  border-radius: 999px;
+
+  background:
+    rgba(125, 45, 60, 0.08);
+}
+
+.back-to-top:active {
+  background:
+    rgba(125, 45, 60, 0.18);
+}
