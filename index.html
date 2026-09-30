@@ -793,6 +793,57 @@
 
   <button class="lightbox-next" id="lightbox-next" aria-label="次の画像">›</button>
 </div>
+
+ <!-- =========================
+     SECRET ACCESS
+========================== -->
+
+<div class="secret-gate" id="secret-gate" aria-hidden="true">
+
+  <!-- 最初に出る画面 -->
+  <div class="secret-access" id="secret-access">
+    <p>ACCESS GRANTED</p>
+  </div>
+
+
+  <!-- 年齢確認 -->
+  <div class="secret-age" id="secret-age" hidden>
+
+    <p class="secret-terminal-title">
+      PRIVATE ARCHIVE
+    </p>
+
+    <p class="secret-question">
+      &gt; あなたは18歳以上ですか？ [Y/N]
+    </p>
+
+    <form id="secret-form">
+
+      <div class="secret-input-row">
+        <span>&gt;</span>
+
+        <input
+          type="text"
+          id="secret-answer"
+          autocomplete="off"
+          autocapitalize="off"
+          spellcheck="false"
+          maxlength="3"
+          aria-label="年齢確認の回答"
+        >
+      </div>
+
+      <button type="submit" class="secret-enter">
+        ENTER
+      </button>
+
+    </form>
+
+    <p class="secret-message" id="secret-message"></p>
+
+  </div>
+
+</div>
   
   <script src="./script.js?v=3"></script>
 
