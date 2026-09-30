@@ -2572,19 +2572,21 @@ a {
 /* PASSWORD */
 
 .secret-password {
+  margin-top: 22px;
+  padding-top: 17px;
+
+  border-top:
+    1px solid rgba(170, 160, 165, 0.09);
+}
+
+
+.secret-password-main {
   display: flex;
 
   align-items: center;
   justify-content: center;
 
-  gap: 10px;
-
-  margin-top: 22px;
-
-  padding-top: 17px;
-
-  border-top:
-    1px solid rgba(170, 160, 165, 0.09);
+  gap: 12px;
 }
 
 
@@ -2599,6 +2601,75 @@ a {
 
 
 .secret-password-value {
+  min-width: 82px;
+
+  color: #c49aa3;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.10em;
+
+  text-align: left;
+}
+
+
+/* SHOW / COPY */
+
+.secret-password-actions {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 14px;
+}
+
+
+.password-show,
+.password-copy {
+  min-width: 68px;
+
+  padding: 6px 11px;
+
+  color: #a97982;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  border:
+    1px solid rgba(160, 80, 97, 0.25);
+
+  border-radius: 999px;
+
+  background:
+    rgba(120, 35, 53, 0.07);
+}
+
+
+.password-show:active,
+.password-copy:active {
+  background:
+    rgba(125, 40, 58, 0.17);
+
+  transform: scale(0.97);
+}
+
+
+.secret-password-value {
+  min-width: 82px;
+
   color: #c49aa3;
 
   font-family:
@@ -2608,4 +2679,6 @@ a {
   font-size: 0.75rem;
 
   letter-spacing: 0.10em;
+
+  text-align: left;
 }
