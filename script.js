@@ -234,15 +234,39 @@ revealTargets.forEach((target) => {
 });
 
 /* =========================================
-   SECRET ARCHIVE
+   SECRET ACCESS
 ========================================= */
 
-const secretTrigger = document.querySelector(".ending-ornament");
+const secretTrigger =
+  document.querySelector(".ending-ornament");
+
+const secretGate =
+  document.getElementById("secret-gate");
+
+const secretAccess =
+  document.getElementById("secret-access");
+
+const secretAge =
+  document.getElementById("secret-age");
+
+const secretForm =
+  document.getElementById("secret-form");
+
+const secretAnswer =
+  document.getElementById("secret-answer");
+
+const secretMessage =
+  document.getElementById("secret-message");
+
 
 let secretTapCount = 0;
 let secretTapTimer = null;
 
+
+/* ◇を5回タップ */
+
 secretTrigger?.addEventListener("click", () => {
+
   secretTapCount++;
 
   clearTimeout(secretTapTimer);
@@ -251,9 +275,121 @@ secretTrigger?.addEventListener("click", () => {
     secretTapCount = 0;
   }, 2500);
 
+
   if (secretTapCount >= 5) {
+
     secretTapCount = 0;
 
-    window.location.href = "./secret.html";
+    secretGate.classList.add("is-open");
+
+    secretGate.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+    document.body.style.overflow = "hidden";
+
+
+    /* 最初はACCESS GRANTEDだけ表示 */
+
+    secretAccess.hidden = false;
+    secretAge.hidden = true;
+
+
+    /* 少し待って年齢確認へ */
+
+    setTimeout(() => {
+
+      secretAccess.hidden = true;
+      secretAge.hidden = false;
+
+      setTimeout(() => {
+        secretAnswer?.focus();
+      }, 100);
+
+    }, 1400);
+
   }
+
 });
+
+
+/* 年齢確認 */
+
+secretForm?.addEventListener(
+  "submit",
+  (event) => {
+
+    event.preventDefault();
+
+
+    const answer =
+      secretAnswer.value
+        .trim()
+        .toLowerCase();
+
+
+    /* YES */
+
+    if (
+      answer === "y" ||
+      answer === "yes"
+    ) {
+
+      secretMessage.textContent =
+        "ACCESS CONFIRMED";
+
+      secretAnswer.disabled = true;
+
+
+      setTimeout(() => {
+
+        window.location.href =
+          "./secret.html";
+
+      }, 900);
+
+      return;
+    }
+
+
+    /* NO */
+
+    if (
+      answer === "n" ||
+      answer === "no"
+    ) {
+
+      secretMessage.textContent =
+        "ACCESS DENIED";
+
+
+      setTimeout(() => {
+
+        secretGate.classList.remove(
+          "is-open"
+        );
+
+        secretGate.setAttribute(
+          "aria-hidden",
+          "true"
+        );
+
+        document.body.style.overflow = "";
+
+        secretAnswer.value = "";
+        secretMessage.textContent = "";
+
+      }, 1200);
+
+      return;
+    }
+
+
+    /* その他の入力 */
+
+    secretMessage.textContent =
+      "TYPE Y OR N";
+
+  }
+);
