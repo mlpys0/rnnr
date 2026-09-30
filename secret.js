@@ -218,3 +218,133 @@ document.addEventListener(
 
   }
 );
+
+/* =========================================
+   NOVEL PASSWORD
+========================================= */
+
+const passwordBoxes =
+  document.querySelectorAll(
+    ".secret-password"
+  );
+
+
+passwordBoxes.forEach((box) => {
+
+  const password =
+    box.dataset.password || "";
+
+  const value =
+    box.querySelector(
+      ".secret-password-value"
+    );
+
+  const showButton =
+    box.querySelector(
+      ".password-show"
+    );
+
+  const copyButton =
+    box.querySelector(
+      ".password-copy"
+    );
+
+
+  let isVisible = false;
+
+
+  /* SHOW / HIDE */
+
+  showButton?.addEventListener(
+    "click",
+    () => {
+
+      isVisible = !isVisible;
+
+
+      if (isVisible) {
+
+        value.textContent =
+          password;
+
+        showButton.textContent =
+          "HIDE";
+
+      } else {
+
+        value.textContent =
+          "••••••••";
+
+        showButton.textContent =
+          "SHOW";
+
+      }
+
+    }
+  );
+
+
+  /* COPY */
+
+  copyButton?.addEventListener(
+    "click",
+    async () => {
+
+      try {
+
+        await navigator.clipboard.writeText(
+          password
+        );
+
+        copyButton.textContent =
+          "COPIED";
+
+
+        setTimeout(() => {
+
+          copyButton.textContent =
+            "COPY";
+
+        }, 1200);
+
+      } catch {
+
+        /* Safari等の予備処理 */
+
+        const temp =
+          document.createElement(
+            "textarea"
+          );
+
+        temp.value = password;
+
+        document.body.appendChild(
+          temp
+        );
+
+        temp.select();
+
+        document.execCommand(
+          "copy"
+        );
+
+        temp.remove();
+
+
+        copyButton.textContent =
+          "COPIED";
+
+
+        setTimeout(() => {
+
+          copyButton.textContent =
+            "COPY";
+
+        }, 1200);
+
+      }
+
+    }
+  );
+
+});
