@@ -463,7 +463,7 @@ entryWarningButton?.addEventListener(
 
       entryWarning.remove();
 
-    }, 700);
+    }, 1700);
 
   }
 );
