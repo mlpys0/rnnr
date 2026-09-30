@@ -1572,3 +1572,207 @@ a {
     transition: none;
   }
 }
+
+/* ==================================================
+   SECRET ACCESS
+================================================== */
+
+.secret-gate {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  color: #d8d0d3;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(70, 18, 30, 0.16),
+      transparent 45%
+    ),
+    #0c0b0d;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  text-align: center;
+}
+
+.secret-gate.is-open {
+  display: flex;
+  animation: secretFadeIn 0.45s ease both;
+}
+
+@keyframes secretFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* ACCESS GRANTED */
+
+.secret-access p {
+  margin: 0;
+
+  color: #bd596b;
+
+  font-size: 0.82rem;
+  letter-spacing: 0.30em;
+
+  text-shadow:
+    0 0 12px rgba(170, 40, 65, 0.42);
+
+  animation: secretAccess 1s ease both;
+}
+
+@keyframes secretAccess {
+  0% {
+    opacity: 0;
+    filter: blur(5px);
+    letter-spacing: 0.45em;
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    letter-spacing: 0.30em;
+  }
+}
+
+
+/* 年齢確認 */
+
+.secret-age {
+  width: min(100%, 420px);
+
+  padding: 30px 24px;
+
+  text-align: left;
+
+  border:
+    1px solid rgba(155, 74, 90, 0.25);
+
+  background:
+    rgba(18, 16, 19, 0.94);
+
+  box-shadow:
+    0 20px 70px rgba(0, 0, 0, 0.55);
+}
+
+.secret-gate [hidden] {
+  display: none !important;
+}
+
+.secret-terminal-title {
+  margin:
+    0
+    0
+    28px;
+
+  color: #a64d5d;
+
+  font-size: 0.60rem;
+  letter-spacing: 0.30em;
+}
+
+.secret-question {
+  margin:
+    0
+    0
+    18px;
+
+  color: #cec5c8;
+
+  font-size: 0.72rem;
+  line-height: 1.9;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* 入力欄 */
+
+.secret-input-row {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 18px;
+
+  color: #b95365;
+}
+
+.secret-input-row input {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 8px 4px;
+
+  color: #d8cdd0;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.82rem;
+
+  outline: none;
+
+  border: none;
+  border-bottom:
+    1px solid rgba(170, 80, 98, 0.38);
+
+  border-radius: 0;
+
+  background: transparent;
+
+  caret-color: #c45b6e;
+}
+
+.secret-enter {
+  padding: 7px 15px;
+
+  color: #bc7783;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.58rem;
+  letter-spacing: 0.18em;
+
+  border:
+    1px solid rgba(160, 75, 92, 0.30);
+
+  background:
+    rgba(125, 35, 54, 0.08);
+}
+
+.secret-message {
+  min-height: 1.5em;
+
+  margin:
+    17px
+    0
+    0;
+
+  color: #9e4a5a;
+
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+}
