@@ -399,3 +399,71 @@ secretForm?.addEventListener(
 
   }
 );
+
+/* =========================================
+   ENTRY WARNING
+========================================= */
+
+const entryWarning =
+  document.getElementById(
+    "entry-warning"
+  );
+
+const entryWarningButton =
+  document.getElementById(
+    "entry-warning-button"
+  );
+
+
+/*
+  同じタブで一度ENTERしていれば、
+  リロード時はもう一度出さない
+*/
+
+const entryAccepted =
+  sessionStorage.getItem(
+    "rnnrEntryAccepted"
+  );
+
+
+if (entryAccepted === "yes") {
+
+  entryWarning?.remove();
+
+} else {
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+/* ENTER */
+
+entryWarningButton?.addEventListener(
+  "click",
+  () => {
+
+    sessionStorage.setItem(
+      "rnnrEntryAccepted",
+      "yes"
+    );
+
+
+    entryWarning.classList.add(
+      "is-closing"
+    );
+
+
+    document.body.style.overflow =
+      "";
+
+
+    setTimeout(() => {
+
+      entryWarning.remove();
+
+    }, 700);
+
+  }
+);
