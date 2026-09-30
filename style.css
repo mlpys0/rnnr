@@ -2340,6 +2340,8 @@ a {
   line-height: 2.1;
 
   text-align: left;
+
+  white-space: pre-line;
 }
 
 
