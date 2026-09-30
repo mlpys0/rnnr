@@ -2436,3 +2436,176 @@ a {
   }
 
 }
+
+
+/* ==================================================
+   SECRET / SPECIAL THANKS NOVEL
+================================================== */
+
+.secret-novel-thanks {
+  margin: 80px 0 65px;
+}
+
+
+.secret-novel-heading {
+  margin-bottom: 18px;
+
+  text-align: center;
+}
+
+
+.secret-novel-heading > span {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #a85a69;
+
+  font-family: var(--font-en);
+
+  font-size: 0.52rem;
+  letter-spacing: 0.28em;
+}
+
+
+.secret-novel-heading h2 {
+  margin: 0;
+
+  color: #ddd4d7;
+
+  font-family: var(--font-en);
+
+  font-size: 1.05rem;
+  font-weight: 400;
+
+  letter-spacing: 0.18em;
+}
+
+
+.secret-novel-heading p {
+  margin: 7px 0 0;
+
+  color: #81777b;
+
+  font-family: var(--font-jp);
+
+  font-size: 0.65rem;
+
+  text-align: center;
+}
+
+
+
+/* CARD */
+
+.secret-novel-card {
+  padding: 24px 20px;
+
+  text-align: center;
+
+  border:
+    1px solid rgba(160, 80, 98, 0.18);
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(39, 34, 38, 0.96),
+      rgba(25, 22, 25, 0.96)
+    );
+
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.25);
+}
+
+
+.secret-novel-note {
+  margin: 0 0 20px;
+
+  color: #bdb4b7;
+
+  font-family: var(--font-jp);
+
+  font-size: 0.72rem;
+
+  line-height: 2;
+
+  text-align: center;
+}
+
+
+
+/* LINK */
+
+.secret-novel-link {
+  display: inline-block;
+
+  padding: 8px 18px;
+
+  color: #cf8d99;
+
+  font-family: var(--font-en);
+
+  font-size: 0.60rem;
+  letter-spacing: 0.18em;
+
+  text-decoration: none;
+
+  border:
+    1px solid rgba(165, 75, 93, 0.32);
+
+  border-radius: 999px;
+
+  background:
+    rgba(125, 35, 55, 0.10);
+}
+
+
+.secret-novel-link:active {
+  background:
+    rgba(125, 35, 55, 0.20);
+}
+
+
+
+/* PASSWORD */
+
+.secret-password {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 22px;
+
+  padding-top: 17px;
+
+  border-top:
+    1px solid rgba(170, 160, 165, 0.09);
+}
+
+
+.secret-password-label {
+  color: #7e7276;
+
+  font-family: var(--font-en);
+
+  font-size: 0.50rem;
+  letter-spacing: 0.18em;
+}
+
+
+.secret-password-value {
+  color: #c49aa3;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 0.75rem;
+
+  letter-spacing: 0.10em;
+}
