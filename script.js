@@ -232,3 +232,28 @@ revealTargets.forEach((target) => {
   target.classList.add("reveal-ready");
   revealObserver.observe(target);
 });
+
+/* =========================================
+   SECRET ARCHIVE
+========================================= */
+
+const secretTrigger = document.querySelector(".ending-ornament");
+
+let secretTapCount = 0;
+let secretTapTimer = null;
+
+secretTrigger?.addEventListener("click", () => {
+  secretTapCount++;
+
+  clearTimeout(secretTapTimer);
+
+  secretTapTimer = setTimeout(() => {
+    secretTapCount = 0;
+  }, 2500);
+
+  if (secretTapCount >= 5) {
+    secretTapCount = 0;
+
+    window.location.href = "./secret.html";
+  }
+});
