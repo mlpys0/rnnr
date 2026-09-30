@@ -2861,3 +2861,96 @@ a {
   background:
     rgba(125, 40, 58, 0.18);
 }
+
+/* ==================================================
+   ENTRY → HERO REVEAL
+================================================== */
+
+.entry-warning ~ main .hero-title,
+.entry-warning ~ main .hero-nav,
+.entry-warning ~ main .hero .note {
+  opacity: 0;
+}
+
+
+/* rnnr */
+
+.entry-warning.is-closing
+~ main
+.hero-title {
+  animation:
+    heroTitleReveal
+    1s
+    cubic-bezier(0.22, 1, 0.36, 1)
+    0.18s
+    both;
+}
+
+@keyframes heroTitleReveal {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+
+/* NAV */
+
+.entry-warning.is-closing
+~ main
+.hero-nav {
+  animation:
+    heroNavReveal
+    0.8s
+    ease
+    0.48s
+    both;
+}
+
+@keyframes heroNavReveal {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* 注意書き */
+
+.entry-warning.is-closing
+~ main
+.hero .note {
+  animation:
+    heroNoteReveal
+    0.85s
+    ease
+    0.68s
+    both;
+}
+
+@keyframes heroNoteReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    filter: blur(2px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
