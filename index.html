@@ -389,7 +389,7 @@
         <h3>ORIGINAL</h3>
         <p>本編世界線</p>
       </div>
-      <p class="story-world-intro">本編の出会いから現在まで、ふたりの歩みを辿る記録。</p>
+      <p class="story-world-intro">本編の出会いから現在までの記録</p>
       <div class="story-record-grid">
             <button type="button" class="story-record-button" data-story-record="original-beginning">
               <span>BEGINNING</span><small>馴れ初め</small>
@@ -415,13 +415,13 @@
           <small>TO BE CONTINUED...?</small>
         </button>
       </div>
-      <div class="story-future-panel" id="story-future-original" hidden>
+      <div class="story-future-panel" id="story-future-original" hidden="">
         <div class="story-future-heading">
           <span>RECORD UNLOCKED</span>
           <h4>FUTURE ARCHIVE</h4>
           <p>ORIGINAL / YEARS LATER</p>
         </div>
-        <p class="story-future-description">ここに、この世界線の未来についての短い紹介文を書けます。</p>
+        <p class="story-future-description">ふたりの歩む物語の結末</p>
         <div class="story-record-grid story-future-grid">
             <button type="button" class="story-record-button story-future-record-button" data-story-record="original-years">
               <span>YEARS LATER</span><small>数年後</small>
@@ -440,7 +440,7 @@
       </div>
     </section>
 
-    <section class="story-world story-world-freeter" id="story-world-freeter" data-story-world="freeter" role="tabpanel" aria-labelledby="story-tab-freeter" hidden>
+    <section class="story-world story-world-freeter" id="story-world-freeter" data-story-world="freeter" role="tabpanel" aria-labelledby="story-tab-freeter" hidden="">
       <div class="story-world-heading">
         <span>ALTERNATE TIMELINE</span>
         <h3>FREETER IF</h3>
@@ -472,13 +472,13 @@
           <small>TO BE CONTINUED...?</small>
         </button>
       </div>
-      <div class="story-future-panel" id="story-future-freeter" hidden>
+      <div class="story-future-panel" id="story-future-freeter" hidden="">
         <div class="story-future-heading">
           <span>RECORD UNLOCKED</span>
           <h4>FUTURE ARCHIVE</h4>
           <p>FREETER IF / YEARS LATER</p>
         </div>
-        <p class="story-future-description">ここに、この世界線の未来についての短い紹介文を書けます。</p>
+        <p class="story-future-description">ふたりの歩む物語の結末。</p>
         <div class="story-record-grid story-future-grid">
             <button type="button" class="story-record-button story-future-record-button" data-story-record="freeter-years">
               <span>YEARS LATER</span><small>数年後</small>
@@ -499,61 +499,34 @@
   </section>
 
   <!-- STORY RECORD POPUPの文章：次のtemplate内を書き換えます -->
-  <template id="story-text-original-beginning">
-    <p>ここに本編の「馴れ初め」を記載します。</p>
+  <template id="story-text-original-beginning"><br>
   </template>
 
-  <template id="story-text-original-relationship">
-    <p>ここに本編の「関係性」を記載します。</p>
-  </template>
+  <template id="story-text-original-relationship">互いの傷に触れることを許した関係</template>
 
-  <template id="story-text-original-story">
-    <p>ここに本編の「主な出来事」を記載します。</p>
-  </template>
+  <template id="story-text-original-story"><br></template>
 
-  <template id="story-text-original-present">
-    <p>ここに本編の「現在の二人」を記載します。</p>
-  </template>
+  <template id="story-text-original-present">四人の拠点の隣町に二人で暮らしている。</template>
 
-  <template id="story-text-original-years">
-    <p>ここに本編の「数年後」を記載します。</p>
-  </template>
+  <template id="story-text-original-years">三人とも時々交流しながら穏やかな生活を送る。<div>蓮は裏社会から離れ表の世界で職に就いている。</div></template>
 
-  <template id="story-text-original-life">
-    <p>ここに本編の「暮らし」を記載します。</p>
-  </template>
+  <template id="story-text-original-life"><br></template>
 
-  <template id="story-text-original-promise">
-    <p>ここに本編の「これから」を記載します。</p>
-  </template>
+  <template id="story-text-original-promise">ふたりは幸せにはなれない。<div>蓮が犯した罪は消えず、そのしわ寄せは寧子にも降りかかることになる。蓮は寧子の人生も背負って生きていく。</div></template>
 
-  <template id="story-text-freeter-beginning">
-    <p>ここにフリーターIFの「馴れ初め」を記載します。</p>
-  </template>
+  <template id="story-text-freeter-beginning"><br></template>
 
-  <template id="story-text-freeter-relationship">
-    <p>ここにフリーターIFの「関係性」を記載します。</p>
-  </template>
+  <template id="story-text-freeter-relationship"><br></template>
 
-  <template id="story-text-freeter-story">
-    <p>ここにフリーターIFの「主な出来事」を記載します。</p>
-  </template>
+  <template id="story-text-freeter-story"><br></template>
 
-  <template id="story-text-freeter-present">
-    <p>ここにフリーターIFの「現在の二人」を記載します。</p>
-  </template>
+  <template id="story-text-freeter-present"><br></template>
 
-  <template id="story-text-freeter-years">
-    <p>ここにフリーターIFの「数年後」を記載します。</p>
-  </template>
+  <template id="story-text-freeter-years">寧子は就職し、蓮は無事高卒認定試験に合格。</template>
 
-  <template id="story-text-freeter-life">
-    <p>ここにフリーターIFの「暮らし」を記載します。</p>
-  </template>
+  <template id="story-text-freeter-life"><br></template>
 
-  <template id="story-text-freeter-promise">
-    <p>ここにフリーターIFの「これから」を記載します。</p>
-  </template>
+  <template id="story-text-freeter-promise"><br></template>
 
 
 <div class="chapter-title chapter-songs" id="image-songs">
@@ -950,5 +923,6 @@
 
 
 
-</body>
-</html>
+
+
+</body></html>
