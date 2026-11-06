@@ -145,11 +145,54 @@ function imageEntry(img,index){const a=img.closest('a');return entry(`画像 ${i
 function pushImages(groups,id,label,selector,addTargetSelector){const doc=state.docs[state.mode];const images=[...doc.querySelectorAll(selector)];const container=doc.querySelector(addTargetSelector);if(!images.length&&!container)return;const g=group(id,label,container?()=>addImage(container):null);images.forEach((image,i)=>item(g,`画像 ${i+1}`,()=>imageEntry(image,i)));groups.push(g)}
 function addImage(container){const doc=state.docs[state.mode];const n=[...container.querySelectorAll('img')].length+1;const path=`images/new-${n}.PNG`;const a=doc.createElement('a');a.className='lightbox-trigger';a.setAttribute('data-group',container.classList.contains('character-preview')?(container.querySelector('a')?.dataset.group||'extra'):container.classList.contains('special-gallery')?'special':container.classList.contains('gallery')?'gallery':container.classList.contains('about-us-images')?'about-us':'extra');a.href=path;const img=doc.createElement('img');img.src=path;img.alt=`New Illustration ${n}`;img.setAttribute('loading','lazy');a.append(img);if(container.classList.contains('gallery')){const figure=doc.createElement('figure');figure.className='gallery-item';figure.append(a);container.append(figure)}else container.append(a);markDirty();render();toast('画像欄を追加しました。パスを変更し、画像もGitHubへアップロードしてください。')}
 function addSong(groupNode){const doc=state.docs[state.mode];const sample=groupNode.querySelector('.song-item:last-of-type')||groupNode.querySelector('.song-item');let n;if(sample){n=sample.cloneNode(true)}else{n=doc.createElement('div');n.className='song-item';n.innerHTML='<a class="song-title" href="#" target="_blank" rel="noopener noreferrer">新しい曲</a><p class="song-artist">アーティスト</p><p class="song-note"></p>'}const title=n.querySelector('.song-title');if(title){title.textContent='新しい曲';title.href='#'}const artist=n.querySelector('.song-artist');if(artist)artist.textContent='アーティスト';const note=n.querySelector('.song-note');if(note)note.textContent='';groupNode.append(n);markDirty();render();toast('曲を追加しました')}
+
+/* OUR STORIES: original/freeter timelines and future records */
+function addStoryRecord(world, future){
+ const doc=state.docs.main;
+ const section=doc?.querySelector(`[data-story-world="${world}"]`);
+ const grid=section?.querySelector(future?'.story-future-grid':'.story-record-grid:not(.story-future-grid)');
+ if(!grid)return;
+ let n=1, id='';
+ do{id=`${world}-${future?'future-':''}custom-${n++}`}while(doc.getElementById('story-text-'+id));
+ const b=doc.createElement('button'); b.type='button';
+ b.className='story-record-button'+(future?' story-future-record-button':'');
+ b.dataset.storyRecord=id;
+ const en=doc.createElement('span'); en.textContent='NEW RECORD';
+ const ja=doc.createElement('small'); ja.textContent='新しい項目';
+ const arrow=doc.createElement('span'); arrow.className='story-record-arrow';arrow.setAttribute('aria-hidden','true');arrow.textContent='↗';
+ b.append(en,ja,arrow);grid.append(b);
+ const template=doc.createElement('template');template.id='story-text-'+id;
+ template.innerHTML='<p>ここに文章を書いてください。</p>';
+ doc.body.append(template);markDirty();render();toast('OUR STORIESに新しい記録を追加しました');
+}
+function addStoryEditorGroups(groups,doc){
+ for(const [world,worldLabel] of [['original','本編'],['freeter','フリーターIF']]){
+  const section=doc.querySelector(`[data-story-world="${world}"]`);
+  if(!section)continue;
+  const basic=group('stories-'+world,`OUR STORIES / ${worldLabel}`,()=>addStoryRecord(world,false));
+  item(basic,'この世界線の紹介文',()=>entry('世界線の紹介',[fieldText('見出し（英語）',section.querySelector('.story-world-heading h3')),fieldRich('世界線の説明',section.querySelector('.story-world-intro'))]));
+  const future=group('stories-'+world+'-future',`FUTURE / ${worldLabel}`,()=>addStoryRecord(world,true));
+  item(future,'未来の紹介文',()=>entry('未来の紹介',[fieldRich('未来の説明',section.querySelector('.story-future-description'))]));
+  for(const b of section.querySelectorAll('[data-story-record]')){
+   const template=doc.getElementById('story-text-'+b.dataset.storyRecord);
+   const groupTarget=b.classList.contains('story-future-record-button')?future:basic;
+   const label=(b.querySelector('small')?.textContent||'新しい記録').trim();
+   item(groupTarget,label,()=>entry(`記録：${label}`,[
+     fieldText('項目名（英語）',b.querySelector('span')),
+     fieldText('項目名（日本語）',b.querySelector('small')),
+     fieldRich('ポップアップの本文',template)
+   ],{remove(){b.remove();template?.remove()}}));
+  }
+  groups.push(basic,future);
+ }
+}
+
 function buildMain(doc){const groups=[];
  const cover=group('cover','TOP / 注意書き');item(cover,'トップの文字',()=>entry('タイトル・サブタイトル',[fieldText('サイトタイトル',doc.querySelector('.hero-title h1')),fieldText('サブタイトル',doc.querySelector('.hero-title .subtitle'))]));
  for(const [sel,label] of [['.entry-warning-text','入場時の注意書き'],['.hero .note p','トップの注意書き'],['.hero-record','トップの紹介欄']]){const n=doc.querySelector(sel);if(n)item(cover,label,()=>entry(label,[fieldRich('本文',n)]))}groups.push(cover);
- const catGroups=[['me','ABOUT ME','.card.her'],['him','ABOUT HIM','.card.him'],['us','ABOUT US','.card.relationship:not(.about-us-images-card)']];
+ const catGroups=[['me','ABOUT ME','.card.her'],['him','ABOUT HIM','.card.him'],['us','ABOUT US','.card.relationship:not(.about-us-images-card):not(.story-shell)']];
  for(const [id,label,sel] of catGroups){const cards=[...doc.querySelectorAll(sel)];const g=group(id,label);cards.forEach((card,i)=>item(g,card.querySelector('h2')?.textContent.trim()||`カード ${i+1}`,()=>{const h=card.querySelector('h2');const blocks=[...card.querySelectorAll('.profile, .text-block, :scope > p')];return entry(`カード ${i+1}`,[fieldText('見出し',h),...blocks.map((b,j)=>fieldRich(`本文 ${j+1}`,b))])}));if(cards.length)groups.push(g)}
+ addStoryEditorGroups(groups,doc);
  pushImages(groups,'meimg','寧子のイラスト','.character-preview a[data-group="neruko"] img','.character-preview:has(a[data-group="neruko"])');
  pushImages(groups,'himimg','蓮のイラスト','.character-preview a[data-group="ren"] img','.character-preview:has(a[data-group="ren"])');
  pushImages(groups,'usimg','二人の説明画像','.about-us-images img','.about-us-images');

@@ -467,3 +467,135 @@ entryWarningButton?.addEventListener(
 
   }
 );
+
+
+/* =========================================
+   OUR STORIES / TWO TIMELINES
+   Independent of the image lightbox and secret gate.
+========================================= */
+(() => {
+  const root = document.querySelector('.story-shell');
+  if (!root) return;
+
+  const tabs = Array.from(root.querySelectorAll('[data-story-tab]'));
+  const worlds = Array.from(root.querySelectorAll('[data-story-world]'));
+  const modal = document.getElementById('story-record-modal');
+  const modalClose = document.getElementById('story-record-close');
+  const modalMeta = document.getElementById('story-record-meta');
+  const modalTitle = document.getElementById('story-record-title');
+  const modalContent = document.getElementById('story-record-content');
+  const veil = document.getElementById('story-time-veil');
+  const veilText = document.getElementById('story-time-label');
+  let lastButton = null;
+  let previousOverflow = '';
+  let futureBusy = false;
+
+  function closeFuture(world) {
+    const panel = document.getElementById(`story-future-${world}`);
+    const trigger = root.querySelector(`[data-story-future="${world}"]`);
+    if (!panel || !trigger) return;
+    panel.hidden = true;
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.setAttribute('aria-label', `${world === 'original' ? '本編' : 'フリーターIF'}の未来の記録を開く`);
+  }
+
+  function switchWorld(name, focusTab = false) {
+    if (futureBusy) return;
+    for (const panel of worlds) {
+      const active = panel.dataset.storyWorld === name;
+      panel.hidden = !active;
+      if (!active) closeFuture(panel.dataset.storyWorld);
+    }
+    for (const tab of tabs) {
+      const active = tab.dataset.storyTab === name;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = active ? 0 : -1;
+      if (active && focusTab) tab.focus();
+    }
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => switchWorld(tab.dataset.storyTab));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      let next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 :
+        (index + (event.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length;
+      switchWorld(tabs[next].dataset.storyTab, true);
+    });
+  });
+
+  root.querySelectorAll('[data-story-record]').forEach(button => {
+    button.addEventListener('click', () => {
+      const id = button.dataset.storyRecord;
+      const template = document.getElementById(`story-text-${id}`);
+      if (!modal || !template) return;
+      const currentWorld = button.closest('[data-story-world]');
+      const worldName = currentWorld?.dataset.storyWorld === 'freeter' ? 'FREETER IF' : 'ORIGINAL';
+      const title = button.querySelector('span')?.textContent?.trim() || 'RECORD';
+      modalMeta.textContent = `${worldName} / ${button.classList.contains('story-future-record-button') ? 'FUTURE RECORD' : 'PRESENT RECORD'}`;
+      modalTitle.textContent = title;
+      modalContent.replaceChildren(template.content.cloneNode(true));
+      lastButton = button;
+      previousOverflow = document.body.style.overflow;
+      if (typeof modal.showModal === 'function') modal.showModal();
+      else modal.setAttribute('open', '');
+      document.body.style.overflow = 'hidden';
+      modalClose?.focus();
+    });
+  });
+
+  const closeModal = () => {
+    if (!modal?.open) return;
+    if (typeof modal.close === 'function') modal.close();
+    else modal.removeAttribute('open');
+  };
+  modalClose?.addEventListener('click', closeModal);
+  modal?.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+  modal?.addEventListener('close', () => {
+    document.body.style.overflow = previousOverflow;
+    lastButton?.focus();
+  });
+
+  root.querySelectorAll('[data-story-future]').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      if (futureBusy) return;
+      const world = trigger.dataset.storyFuture;
+      const panel = document.getElementById(`story-future-${world}`);
+      if (!panel) return;
+      if (!panel.hidden) {
+        closeFuture(world);
+        trigger.focus();
+        return;
+      }
+      futureBusy = true;
+      const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      if (veil && !reducedMotion) {
+        veilText.textContent = 'PRESENT RECORD CLOSED';
+        veil.classList.add('is-active');
+      }
+      const reveal = () => {
+        panel.hidden = false;
+        trigger.setAttribute('aria-expanded', 'true');
+        trigger.setAttribute('aria-label', '未来の記録を閉じる');
+        if (veil && !reducedMotion) veilText.textContent = 'FUTURE RECORD UNLOCKED';
+        setTimeout(() => {
+          veil?.classList.remove('is-active');
+          panel.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
+          futureBusy = false;
+        }, reducedMotion ? 0 : 420);
+      };
+      setTimeout(reveal, reducedMotion ? 0 : 670);
+    });
+  });
+  root.querySelectorAll('[data-story-return]').forEach(button => {
+    button.addEventListener('click', () => {
+      const world = button.dataset.storyReturn;
+      closeFuture(world);
+      root.querySelector(`[data-story-future="${world}"]`)?.focus();
+    });
+  });
+})();

@@ -27,7 +27,7 @@
 
 <meta name="twitter:image" content="https://mlpys0.github.io/rnnr/images/ogp.png">
 
-  <link rel="stylesheet" href="./style.css?v=13">
+  <link rel="stylesheet" href="./style.css?v=14">
 </head>
 
 <body>
@@ -78,8 +78,6 @@
 
 
 <main>
-  
-<main>
 
   <!-- =========================
        COVER
@@ -99,6 +97,7 @@
       <a href="#about-me" class="nav-me">ME</a>
       <a href="#about-him" class="nav-him">HIM</a>
       <a href="#about-us" class="nav-us">US</a>
+      <a href="#our-stories" class="nav-stories">STORY</a>
       <a href="#image-songs" class="nav-songs">SONGS</a>
       <a href="#gallery" class="nav-gallery">GALLERY</a>
     </nav>
@@ -132,6 +131,7 @@
   <a href="#about-me" class="nav-me">ME</a>
   <a href="#about-him" class="nav-him">HIM</a>
   <a href="#about-us" class="nav-us">US</a>
+      <a href="#our-stories" class="nav-stories">STORY</a>
   <a href="#image-songs" class="nav-songs">SONGS</a>
   <a href="#gallery" class="nav-gallery">GALLERY</a>
 </nav>
@@ -362,8 +362,202 @@
 
 </section>
 
+  <!-- =========================
+       OUR STORIES / TWO TIMELINES
+       ORIGINAL & FREETER IF
+  ========================== -->
+
+  <div class="chapter-title chapter-us chapter-stories" id="our-stories">
+    <span class="chapter-number">04</span>
+    <h2>OUR STORIES</h2>
+    <p>Two timelines, one connection.</p>
+  </div>
+
+  <section class="card relationship story-shell" aria-label="二人の物語">
+    <div class="story-section-intro">
+      <p>異なる世界線における、ふたりの記録。</p>
+    </div>
+
+    <div class="story-switch" role="tablist" aria-label="世界線を選択">
+      <button type="button" id="story-tab-original" class="story-tab is-active" data-story-tab="original" role="tab" aria-selected="true" aria-controls="story-world-original" tabindex="0">ORIGINAL</button>
+      <button type="button" id="story-tab-freeter" class="story-tab" data-story-tab="freeter" role="tab" aria-selected="false" aria-controls="story-world-freeter" tabindex="-1">FREETER IF</button>
+    </div>
+
+    <section class="story-world story-world-original" id="story-world-original" data-story-world="original" role="tabpanel" aria-labelledby="story-tab-original">
+      <div class="story-world-heading">
+        <span>MAIN TIMELINE</span>
+        <h3>ORIGINAL</h3>
+        <p>本編世界線</p>
+      </div>
+      <p class="story-world-intro">本編の出会いから現在まで、ふたりの歩みを辿る記録。</p>
+      <div class="story-record-grid">
+            <button type="button" class="story-record-button" data-story-record="original-beginning">
+              <span>BEGINNING</span><small>馴れ初め</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="story-record-button" data-story-record="original-relationship">
+              <span>RELATIONSHIP</span><small>関係性</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="story-record-button" data-story-record="original-story">
+              <span>STORY</span><small>主な出来事</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="story-record-button" data-story-record="original-present">
+              <span>PRESENT</span><small>現在の二人</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+      </div>
+      <div class="story-future-door">
+        <p class="story-endline">— END OF PRESENT RECORD —</p>
+        <button class="story-future-key" type="button" aria-expanded="false" aria-controls="story-future-original" data-story-future="original" aria-label="本編世界線の未来の記録を開く">
+          <span aria-hidden="true">◇</span>
+          <small>TO BE CONTINUED...?</small>
+        </button>
+      </div>
+      <div class="story-future-panel" id="story-future-original" hidden>
+        <div class="story-future-heading">
+          <span>RECORD UNLOCKED</span>
+          <h4>FUTURE ARCHIVE</h4>
+          <p>ORIGINAL / YEARS LATER</p>
+        </div>
+        <p class="story-future-description">ここに、この世界線の未来についての短い紹介文を書けます。</p>
+        <div class="story-record-grid story-future-grid">
+            <button type="button" class="story-record-button story-future-record-button" data-story-record="original-years">
+              <span>YEARS LATER</span><small>数年後</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="story-record-button story-future-record-button" data-story-record="original-life">
+              <span>DAILY LIFE</span><small>暮らし</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="story-record-button story-future-record-button" data-story-record="original-promise">
+              <span>PROMISE</span><small>これから</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+        </div>
+        <button type="button" class="story-future-return" data-story-return="original">CLOSE FUTURE</button>
+      </div>
+    </section>
+
+    <section class="story-world story-world-freeter" id="story-world-freeter" data-story-world="freeter" role="tabpanel" aria-labelledby="story-tab-freeter" hidden>
+      <div class="story-world-heading">
+        <span>ALTERNATE TIMELINE</span>
+        <h3>FREETER IF</h3>
+        <p>フリーターIF</p>
+      </div>
+      <p class="story-world-intro">もしも、別の人生で出会っていたら。もうひとつのふたりの記録。</p>
+      <div class="story-record-grid">
+            <button type="button" class="story-record-button" data-story-record="freeter-beginning">
+              <span>BEGINNING</span><small>馴れ初め</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="story-record-button" data-story-record="freeter-relationship">
+              <span>RELATIONSHIP</span><small>関係性</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="story-record-button" data-story-record="freeter-story">
+              <span>STORY</span><small>主な出来事</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="story-record-button" data-story-record="freeter-present">
+              <span>PRESENT</span><small>現在の二人</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+      </div>
+      <div class="story-future-door">
+        <p class="story-endline">— END OF PRESENT RECORD —</p>
+        <button class="story-future-key" type="button" aria-expanded="false" aria-controls="story-future-freeter" data-story-future="freeter" aria-label="フリーターIFの未来の記録を開く">
+          <span aria-hidden="true">◇</span>
+          <small>TO BE CONTINUED...?</small>
+        </button>
+      </div>
+      <div class="story-future-panel" id="story-future-freeter" hidden>
+        <div class="story-future-heading">
+          <span>RECORD UNLOCKED</span>
+          <h4>FUTURE ARCHIVE</h4>
+          <p>FREETER IF / YEARS LATER</p>
+        </div>
+        <p class="story-future-description">ここに、この世界線の未来についての短い紹介文を書けます。</p>
+        <div class="story-record-grid story-future-grid">
+            <button type="button" class="story-record-button story-future-record-button" data-story-record="freeter-years">
+              <span>YEARS LATER</span><small>数年後</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="story-record-button story-future-record-button" data-story-record="freeter-life">
+              <span>DAILY LIFE</span><small>暮らし</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+            <button type="button" class="story-record-button story-future-record-button" data-story-record="freeter-promise">
+              <span>PROMISE</span><small>これから</small>
+              <span class="story-record-arrow" aria-hidden="true">↗</span>
+            </button>
+        </div>
+        <button type="button" class="story-future-return" data-story-return="freeter">CLOSE FUTURE</button>
+      </div>
+    </section>
+  </section>
+
+  <!-- STORY RECORD POPUPの文章：次のtemplate内を書き換えます -->
+  <template id="story-text-original-beginning">
+    <p>ここに本編の「馴れ初め」を記載します。</p>
+  </template>
+
+  <template id="story-text-original-relationship">
+    <p>ここに本編の「関係性」を記載します。</p>
+  </template>
+
+  <template id="story-text-original-story">
+    <p>ここに本編の「主な出来事」を記載します。</p>
+  </template>
+
+  <template id="story-text-original-present">
+    <p>ここに本編の「現在の二人」を記載します。</p>
+  </template>
+
+  <template id="story-text-original-years">
+    <p>ここに本編の「数年後」を記載します。</p>
+  </template>
+
+  <template id="story-text-original-life">
+    <p>ここに本編の「暮らし」を記載します。</p>
+  </template>
+
+  <template id="story-text-original-promise">
+    <p>ここに本編の「これから」を記載します。</p>
+  </template>
+
+  <template id="story-text-freeter-beginning">
+    <p>ここにフリーターIFの「馴れ初め」を記載します。</p>
+  </template>
+
+  <template id="story-text-freeter-relationship">
+    <p>ここにフリーターIFの「関係性」を記載します。</p>
+  </template>
+
+  <template id="story-text-freeter-story">
+    <p>ここにフリーターIFの「主な出来事」を記載します。</p>
+  </template>
+
+  <template id="story-text-freeter-present">
+    <p>ここにフリーターIFの「現在の二人」を記載します。</p>
+  </template>
+
+  <template id="story-text-freeter-years">
+    <p>ここにフリーターIFの「数年後」を記載します。</p>
+  </template>
+
+  <template id="story-text-freeter-life">
+    <p>ここにフリーターIFの「暮らし」を記載します。</p>
+  </template>
+
+  <template id="story-text-freeter-promise">
+    <p>ここにフリーターIFの「これから」を記載します。</p>
+  </template>
+
+
 <div class="chapter-title chapter-songs" id="image-songs">
-  <span class="chapter-number">04</span>
+  <span class="chapter-number">05</span>
   <h2>IMAGE SONGS</h2>
   <p>Music for Ren × Neruko</p>
 </div>
@@ -517,8 +711,7 @@
 
 
     <div class="song-item">
-      <a class="song-title" href="https://music.apple.com/jp/album/boy/1595509127?i=1595509128”
-        target=" _blank"="" rel="noopener noreferrer">
+      <a class="song-title" href="https://music.apple.com/jp/album/boy/1595509127?i=1595509128" target="_blank" rel="noopener noreferrer">
         boy
       </a>
 
@@ -552,7 +745,7 @@
 </section>
   
 <div class="chapter-title chapter-gallery" id="gallery">
-  <span class="chapter-number">05</span>
+  <span class="chapter-number">06</span>
   <h2>GALLERY</h2>
   <p>Illustrations</p>
 </div>
@@ -682,6 +875,22 @@
   
 </main>
 
+  <!-- =========================
+       OUR STORIES / DETAIL POPUP
+  ========================== -->
+  <dialog class="story-record-modal" id="story-record-modal" aria-labelledby="story-record-title">
+    <div class="story-record-dialog">
+      <button type="button" class="story-record-close" id="story-record-close" aria-label="詳細を閉じる">×</button>
+      <p class="story-record-meta" id="story-record-meta"></p>
+      <h2 class="story-record-title" id="story-record-title"></h2>
+      <div class="story-record-content" id="story-record-content"></div>
+    </div>
+  </dialog>
+
+  <div class="story-time-veil" id="story-time-veil" aria-hidden="true">
+    <p id="story-time-label">PRESENT RECORD CLOSED</p>
+  </div>
+
   <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightbox-close" aria-label="閉じる">×</button>
 
@@ -737,8 +946,9 @@
 
 </div>
   
-  <script src="./script.js?v=6"></script>
+  <script src="./script.js?v=7"></script>
 
 
 
-</main></body></html>
+</body>
+</html>
