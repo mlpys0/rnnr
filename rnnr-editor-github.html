@@ -24,12 +24,35 @@
 @media(max-width:700px){.github-actions .pill{flex:1 1 140px}.github-auth .pill{flex:1}.github-box{padding:13px}}
 @media(max-width:700px){.page{padding:16px 12px 90px}.top{align-items:flex-start}.brand h1{font-size:28px}.panel{padding:15px}.toolbar{gap:8px}.toolbar .pill{flex:1;justify-content:center;font-size:12px;padding:10px 9px}.workspace{display:block;margin-top:15px}.sidebar{position:static;margin-bottom:17px;padding:12px}.group-nav{flex-direction:row;overflow:auto;gap:7px;padding-bottom:3px}.group-nav button{white-space:nowrap;width:auto;flex:none;padding:8px 11px}.group-nav .count{display:none}.workspace-head h2{font-size:18px}.entry{padding:14px}.pill{font-size:12px}.top .pill{padding:8px 12px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important}}
+
+/* ========================================================
+   RICH TEXT TOOLS — selected text only; main site untouched
+======================================================== */
+.rich-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:0 0 9px;padding:9px;border:1px solid #554049;border-radius:10px;background:#201b20}
+.rich-tool{display:inline-flex;align-items:center;justify-content:center;min-width:33px;height:33px;padding:0 9px;border:1px solid #68525b;border-radius:7px;color:#e7d9dd;background:#302831;font-size:13px;line-height:1}
+.rich-tool:active{background:#643d4c}
+.rich-tool.is-active{border-color:#c38a99;background:#50333e}
+.rich-bold{font-weight:800;font-family:Georgia,serif;font-size:17px}
+.rich-italic{font-family:Georgia,serif;font-style:italic;font-size:17px}
+.rich-underline{text-decoration:underline;font-family:Georgia,serif;font-size:16px}
+.rich-size{display:inline-flex;align-items:center;gap:5px;color:#c0aab1;font-size:11px}
+.rich-size select{appearance:auto;-webkit-appearance:menulist;min-width:83px;height:33px;max-width:110px;border:1px solid #68525b;border-radius:7px;background:#302831;color:#e7d9dd;font-size:12px;padding:0 4px}
+.rich-color-group{display:flex;gap:5px;align-items:center;flex-wrap:wrap}
+.rich-color{width:27px;height:27px;flex:none;padding:0;border:2px solid #54434a;border-radius:50%;box-shadow:inset 0 0 0 1px #0004}
+.rich-color:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.rich-color-custom{display:inline-flex;align-items:center;gap:5px;color:#c0aab1;font-size:11px;min-height:33px;cursor:pointer}
+.rich-color-custom input{width:31px;height:31px;padding:3px;border:1px solid #68525b;border-radius:7px;background:#302831;cursor:pointer}
+.rich-clear{color:#d5b4bf;font-size:11px;letter-spacing:.03em}
+.rich-help{margin:0 0 7px;color:#a899a0;font-size:11px;line-height:1.7}
+.rich-editor:empty:before{content:'ここをタップして文章を入力';color:#7e727a}
+.rich-editor span[style]{box-decoration-break:clone;-webkit-box-decoration-break:clone}
+@media(max-width:700px){.rich-toolbar{gap:6px;padding:8px 6px}.rich-color{width:26px;height:26px}.rich-size select{min-width:76px}.rich-help{font-size:10px}}
 </style>
 </head>
 <body>
 <div class="page">
   <header class="top">
-    <div class="brand"><small>PRIVATE CONTENT MANAGER</small><h1>rnnr editor</h1><p>PC・スマホ対応 / 既存のHTMLを壊さず内容を更新</p></div>
+    <div class="brand"><small>PRIVATE CONTENT MANAGER</small><h1>rnnr editor</h1><p>PC・スマホ対応 / 選択文字の装飾・GitHub直接保存</p></div>
     <button type="button" class="pill secondary" id="previewBtn" disabled>プレビュー</button>
   </header>
 
@@ -125,7 +148,104 @@ function el(tag,cls,text){const n=document.createElement(tag);if(cls)n.className
 function group(id,label,action){return {id,label,action,items:[]}}
 function item(group,title,make){group.items.push({title,make})}
 function fieldText(label,node,attr,placeholder=''){if(!node)return null;const wrap=el('div','field');wrap.append(el('label','',label));const inp=el('input');inp.type='text';inp.placeholder=placeholder;inp.value=attr?node.getAttribute(attr)||'':node.textContent.trim();inp.addEventListener('input',()=>{if(attr)node.setAttribute(attr,inp.value);else node.textContent=inp.value;markDirty()});wrap.append(inp);return wrap}
-function fieldRich(label,node){if(!node)return null;const wrap=el('div','field');const lbl=el('label','',label+'（Enterで改行 / HTMLタグの入力不要）');wrap.append(lbl);const box=el('div','editable');box.setAttribute('contenteditable','true');box.setAttribute('role','textbox');box.setAttribute('aria-label',label);box.setAttribute('aria-multiline','true');box.innerHTML=node.innerHTML;box.addEventListener('input',()=>{node.innerHTML=box.innerHTML;markDirty()});wrap.append(box);return wrap}
+/* 文字の一部分だけを装飾。選択範囲はiOS Safariでツールバーに触れても保持する。 */
+function fieldRich(label,node){
+ if(!node)return null;
+ const wrap=el('div','field');
+ const lbl=el('label','',label+'（文字を選択して太字・色・サイズを変更）');wrap.append(lbl);
+ const bar=el('div','rich-toolbar');bar.setAttribute('role','toolbar');bar.setAttribute('aria-label',label+' 文字装飾');
+ const box=el('div','editable rich-editor');box.setAttribute('contenteditable','true');box.setAttribute('role','textbox');box.setAttribute('aria-label',label);box.setAttribute('aria-multiline','true');box.setAttribute('spellcheck','false');box.innerHTML=node.innerHTML;
+ let savedRange=null;
+ const selectionInBox=()=>{
+   const selection=window.getSelection();if(!selection||!selection.rangeCount)return null;
+   const range=selection.getRangeAt(0);
+   return box.contains(range.commonAncestorContainer)?range:null;
+ };
+ const memorize=()=>{const range=selectionInBox();if(range&&!range.collapsed)savedRange=range.cloneRange()};
+ const sync=()=>{node.innerHTML=box.innerHTML;markDirty()};
+ const getRange=()=>{
+   const now=selectionInBox();
+   if(now&&!now.collapsed){savedRange=now.cloneRange();return now.cloneRange()}
+   if(savedRange&&!savedRange.collapsed&&box.contains(savedRange.commonAncestorContainer))return savedRange.cloneRange();
+   toast('先に本文内の装飾したい文字を選択してください');return null;
+ };
+ // Split only the selected portions of text nodes, preserving paragraphs and <br>.
+ const formatSelection=(property,value)=>{
+   const range=getRange();if(!range)return;
+   const walker=document.createTreeWalker(box,NodeFilter.SHOW_TEXT);
+   const parts=[];let textNode;
+   while((textNode=walker.nextNode())){
+     if(!textNode.nodeValue||!range.intersectsNode(textNode))continue;
+     const start=range.startContainer===textNode?range.startOffset:0;
+     const end=range.endContainer===textNode?range.endOffset:textNode.length;
+     if(end>start)parts.push({textNode,start,end});
+   }
+   if(!parts.length){toast('選択範囲が見つかりません。文字を選び直してください');return}
+   const wrappers=[];
+   for(const {textNode,start,end} of parts){
+     if(!textNode.isConnected)continue;
+     const portion=document.createRange();portion.setStart(textNode,start);portion.setEnd(textNode,end);
+     const span=document.createElement('span');span.style.setProperty(property,value);
+     portion.surroundContents(span);wrappers.push(span);
+   }
+   if(!wrappers.length)return;
+   const after=document.createRange();after.setStartBefore(wrappers[0]);after.setEndAfter(wrappers[wrappers.length-1]);
+   const selection=window.getSelection();selection.removeAllRanges();selection.addRange(after);savedRange=after.cloneRange();
+   sync();
+ };
+ const tool=(text,title,cls,property,value)=>{
+   const btn=el('button','rich-tool '+cls,text);btn.type='button';btn.title=title;btn.setAttribute('aria-label',title);
+   btn.addEventListener('mousedown',event=>event.preventDefault());
+   btn.addEventListener('click',()=>formatSelection(property,value));
+   bar.append(btn);return btn;
+ };
+ tool('B','選択文字を太字にする','rich-bold','font-weight','700');
+ tool('I','選択文字を斜体にする','rich-italic','font-style','italic');
+ tool('U','選択文字に下線を引く','rich-underline','text-decoration','underline');
+ const size=el('label','rich-size','文字サイズ');
+ const choose=el('select');choose.setAttribute('aria-label','選択文字の大きさ');
+ const empty=el('option','','サイズ');empty.value='';choose.append(empty);
+ for(const [value,name] of [['12px','小 12'],['14px','標準 14'],['16px','中 16'],['18px','大 18'],['22px','特大 22'],['26px','最大 26']]){
+   const o=el('option','',name);o.value=value;choose.append(o);
+ }
+ choose.addEventListener('change',()=>{if(choose.value)formatSelection('font-size',choose.value);choose.value=''});
+ size.append(choose);bar.append(size);
+ const colors=el('div','rich-color-group');colors.setAttribute('aria-label','文字色');
+ for(const [value,name] of [['#d1cbcd','通常の文字色'],['#96969f','灰色'],['#d5a0aa','淡い赤'],['#b94758','赤'],['#94192b','深紅']]){
+   const btn=el('button','rich-color');btn.type='button';btn.style.background=value;btn.title=name;btn.setAttribute('aria-label',name);
+   btn.addEventListener('mousedown',event=>event.preventDefault());
+   btn.addEventListener('click',()=>formatSelection('color',value));colors.append(btn);
+ }
+ bar.append(colors);
+ const custom=el('label','rich-color-custom','自由色');const picker=el('input');picker.type='color';picker.value='#d5a0aa';picker.setAttribute('aria-label','自由に文字色を選択');
+ picker.addEventListener('change',()=>formatSelection('color',picker.value));custom.append(picker);bar.append(custom);
+ const clear=el('button','rich-tool rich-clear','装飾解除');clear.type='button';clear.title='選択した文字の装飾を解除';
+ clear.addEventListener('mousedown',event=>event.preventDefault());
+ clear.addEventListener('click',()=>{
+   const range=getRange();if(!range)return;
+   const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);
+   box.focus();
+   // Chromium/Safari implement this standard editing command for visual formatting.
+   const success=document.execCommand('removeFormat',false,null);
+   if(!success){toast('この端末では解除できません。必要な箇所を選んで再設定してください');return}
+   memorize();sync();
+ });bar.append(clear);
+ // iOSの選択ハンドルとタップ操作に対応。
+ box.addEventListener('mouseup',memorize);box.addEventListener('keyup',memorize);
+ box.addEventListener('touchend',()=>setTimeout(memorize,0));
+ document.addEventListener('selectionchange',()=>{
+   const range=selectionInBox();if(range&&!range.collapsed)savedRange=range.cloneRange();
+ });
+ bar.addEventListener('pointerdown',memorize,{capture:true});
+ // External HTML from the clipboard must never be inserted into the saved page.
+ box.addEventListener('paste',event=>{
+   const text=event.clipboardData?.getData('text/plain');if(text===undefined)return;
+   event.preventDefault();document.execCommand('insertText',false,text);
+ });
+ box.addEventListener('input',sync);
+ const help=el('p','rich-help','文字を長押し（PCではドラッグ）で選んでから、上のボタンを押します。選択した部分だけ変わります。');
+ wrap.append(bar,help,box);return wrap;
+}
 function entry(title,fields,opts={}){const card=el('article','entry');const head=el('div','entry-head');head.append(el('h3','',title));if(opts.remove){const del=el('button','pill small danger','削除');del.type='button';del.addEventListener('click',()=>{if(confirm('この項目を削除しますか？')){opts.remove();markDirty();render()}});head.append(del)}card.append(head);for(const f of fields)if(f)card.append(f);return card}
 function imgEditor(img){const a=img.closest('a');const src=img.getAttribute('src')||'';const box=el('div','mini');const preview=el('img','thumb');const fallback=el('div','thumb no-image hidden','NO IMAGE');preview.alt='画像プレビュー';const setPreview=v=>{try{preview.src=new URL(v,BASE).href}catch{preview.removeAttribute('src')} };setPreview(src);preview.addEventListener('load',()=>{fallback.classList.add('hidden');preview.classList.remove('hidden')});preview.addEventListener('error',()=>{preview.classList.add('hidden');fallback.classList.remove('hidden')});box.append(preview,fallback);const inputWrap=el('div','field');inputWrap.style.flex='1';inputWrap.style.marginTop='0';inputWrap.append(el('label','','画像パス（画像ファイルは別途アップロード）'));const input=el('input');input.value=src;input.placeholder='images/example.PNG';input.addEventListener('input',()=>{img.setAttribute('src',input.value);if(a?.classList.contains('lightbox-trigger'))a.setAttribute('href',input.value);setPreview(input.value);markDirty()});inputWrap.append(input);
 const upload=el('button','pill ghost small','この画像をGitHubへアップロード');upload.type='button';upload.style.marginTop='8px';upload.disabled=!githubToken;
